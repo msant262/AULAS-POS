@@ -46,7 +46,7 @@ git push origin main
 
 ## Próximas aulas
 
-Use a skill do projeto **aula-interativa-okami** (em `.agents/skills/`) ao pedir uma nova aula no Cursor/Grok — ela documenta arquitetura, arquivos, regras de tom neutro e checklist de publicação para não repetir o contexto a cada vez.
+Use a skill **[SKILL.md](./SKILL.md)** (`aula-interativa-okami`) ao criar a próxima aula — modelo genérico Okami (HTML autocontido, densidade de conteúdo, highlights, gráficos, simuladores). Cópia do agente em `.agents/skills/aula-interativa-okami/SKILL.md`. OWASP é só a primeira instância do padrão.
 
 ## Repositório
 

@@ -846,10 +846,10 @@ body.search-active .lesson-sec.search-hide{display:none}
 .chart-body-split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(240px,360px);gap:clamp(20px,3vw,32px);align-items:stretch;flex:1}
 .chart-body-bar{display:flex;flex-direction:column;gap:14px;flex:1}
 .chart-ring-wrap{display:flex;align-items:center;justify-content:center;min-height:300px;padding:clamp(16px,2.5vw,28px);border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);background:radial-gradient(ellipse 75% 65% at 50% 42%,color-mix(in oklch,var(--ok-cyan) 9%,transparent) 0%,transparent 70%),var(--ok-bg-0)}
-.chart-plot-ranked{padding:clamp(14px,2vw,22px) clamp(12px,1.5vw,18px);border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);background:var(--ok-bg-0);min-height:300px;display:flex;align-items:center}
-.chart-plot-ranked canvas{width:100%;height:auto;display:block}
+.chart-plot-ranked{padding:clamp(14px,2vw,22px) clamp(12px,1.5vw,18px);border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);background:var(--ok-bg-0);min-height:0;display:block;overflow:visible}
 .chart-plot{padding:clamp(10px,1.5vw,18px) clamp(6px,1vw,12px);border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);background:var(--ok-bg-0);min-height:200px}
-.chart-wrap{position:relative;width:100%;max-width:min(340px,100%);margin:0 auto;aspect-ratio:1}
+.chart-wrap{width:100%;max-width:min(340px,100%);margin:0 auto}
+.chart-wrap>canvas,.chart-plot-ranked canvas,.chart-plot canvas,.chart-body-bar canvas{display:block;max-width:100%;margin:0 auto;touch-action:none;cursor:crosshair}
 .chart-ranked-wrap .chart-legend-item,.chart-cwe-scores-wrap .chart-legend-item,.chart-delta-wrap .chart-legend-item{grid-template-columns:28px 12px minmax(0,1fr) auto;grid-template-rows:auto auto auto;gap:1px 8px;padding:10px 10px}
 .chart-ranked-wrap .chart-legend-rank,.chart-cwe-scores-wrap .chart-legend-rank,.chart-delta-wrap .chart-legend-rank{grid-column:1;grid-row:1;font-size:10px;color:var(--ok-fg-mute);font-weight:700;text-align:center;align-self:center}
 .chart-ranked-wrap .chart-legend-swatch,.chart-cwe-scores-wrap .chart-legend-swatch,.chart-delta-wrap .chart-legend-swatch{grid-column:2;grid-row:1;align-self:center;width:12px;height:12px}
@@ -866,11 +866,12 @@ body.search-active .lesson-sec.search-hide{display:none}
 .chart-donut-wrap .chart-legend-sub{grid-column:2/span 2;grid-row:2;font-size:11px;color:var(--ok-fg-mute);font-weight:500}
 .chart-donut-wrap .chart-legend-meter{grid-column:1/span 3;grid-row:3;height:6px;background:var(--ok-bg-3);margin-top:0}
 .chart-donut-wrap .chart-legend-meter i{opacity:1;min-height:6px}
+.chart-ranked-wrap .chart-body-split,.chart-cwe-scores-wrap .chart-body-split,.chart-delta-wrap .chart-body-split{align-items:start}
 .chart-cwe-scores-wrap .chart-body-split{grid-template-columns:minmax(0,1.35fr) minmax(260px,340px)}
 .chart-delta-wrap .chart-body-split{grid-template-columns:minmax(0,1.2fr) minmax(280px,380px)}
 .chart-delta-wrap .chart-legend-list{max-height:min(420px,58vh)}
 .chart-cwe-scores-wrap .chart-legend-list{max-height:min(440px,58vh)}
-.chart-plot canvas,.chart-ring-wrap canvas,.chart-body-bar canvas{width:100%;display:block;touch-action:none;cursor:crosshair}
+
 .chart-legend-panel{border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);padding:14px 16px;background:var(--ok-bg-0);display:flex;flex-direction:column;min-height:0}
 .chart-legend-panel--compact{padding:10px 12px;margin-top:2px}
 .chart-legend-title{display:block;font-family:var(--ok-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-fg-mute);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--ok-line-soft)}
@@ -892,8 +893,7 @@ body.search-active .lesson-sec.search-hide{display:none}
 .chart-delta-key{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;margin:0 0 14px;padding:10px 14px;border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-1);background:var(--ok-bg-0);font-family:var(--ok-mono);font-size:11px}
 .delta-key.up{color:#ff8f5c}.delta-key.down{color:var(--ok-cyan)}.delta-key.mid{color:var(--ok-fg-mute);opacity:.7}
 .chart-delta-wrap .chart-plot-ranked{min-height:320px}
-.chart-cwe-scores-wrap .chart-plot-ranked,.chart-delta-wrap .chart-plot-ranked{align-items:flex-start}
-.chart-cwe-scores-wrap .chart-plot-ranked{min-height:360px}
+.chart-cwe-scores-wrap .chart-plot-ranked,.chart-delta-wrap .chart-plot-ranked{min-height:0}
 .cwe-ladder-box{padding-bottom:clamp(18px,2.5vw,24px)}
 .cwe-rank-ladder{display:flex;flex-direction:column;gap:6px}
 .cwe-ladder-row{display:grid;grid-template-columns:44px 1fr auto auto;gap:10px 14px;align-items:center;width:100%;padding:12px 14px;border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);background:var(--ok-bg-0);cursor:pointer;text-align:left;transition:border-color .15s,background .15s}
@@ -1925,11 +1925,11 @@ body.ok.theme-light .corr-toolbar{color:var(--ok-fg)}
   <div class="chart-box chart-embed chart-ranked-wrap" data-chart="chart-owasp-prev">
   <header class="chart-hd">
     <span class="section-label">OWASP 2025 — prevalência publicada (%)</span>
-    <p class="chart-sub">Dados oficiais · 2,8M+ aplicações testadas · clique para filtrar categoria</p>
+    <p class="chart-sub">Somente A01, A02 e A04 têm % em testes (2,8M+ apps). As outras 7 categorias vêm do community survey — veja a tabela acima · clique para filtrar</p>
     
   </header>
   <div class="chart-body-split">
-    <div class="chart-plot-ranked"><canvas id="chart-owasp-prev" height="340"></canvas></div>
+    <div class="chart-plot-ranked"><canvas id="chart-owasp-prev" height="240"></canvas></div>
     <div class="chart-legend-panel">
       <span class="chart-legend-title">Ranking</span>
       <div class="chart-legend-list" id="chart-owasp-prev-legend" aria-label="Legenda do gráfico"></div>
@@ -1945,7 +1945,7 @@ body.ok.theme-light .corr-toolbar{color:var(--ok-fg)}
   </header>
   <div class="chart-body-split">
     <div class="chart-ring-wrap">
-      <div class="chart-wrap"><canvas id="chart-breach-vectors" height="300"></canvas></div>
+      <div class="chart-wrap"><canvas id="chart-breach-vectors"></canvas></div>
     </div>
     <div class="chart-legend-panel">
       <span class="chart-legend-title">Distribuição</span>
@@ -2871,7 +2871,7 @@ body.ok.theme-light .corr-toolbar{color:var(--ok-fg)}
   </header>
   <div class="chart-body-split">
     <div class="chart-ring-wrap">
-      <div class="chart-wrap"><canvas id="chart-owasp-donut" height="220"></canvas></div>
+      <div class="chart-wrap"><canvas id="chart-owasp-donut"></canvas></div>
     </div>
     <div class="chart-legend-panel">
       <span class="chart-legend-title">Distribuição</span>
@@ -15033,7 +15033,7 @@ def login(): ...</code></pre>
 <script type="application/json" id="data-cwe-chart">[{"l": "CWE-79", "id": "CWE-79", "name_pt": "Cross-site Scripting (XSS)", "name": "Cross-site Scripting (XSS)", "v": 60.38, "rank": 1, "trend": "0", "kev": 7}, {"l": "CWE-89", "id": "CWE-89", "name_pt": "Injeção SQL", "name": "SQL Injection", "v": 28.72, "rank": 2, "trend": "+1", "kev": 4}, {"l": "CWE-352", "id": "CWE-352", "name_pt": "Cross-Site Request Forgery (CSRF)", "name": "Cross-Site Request Forgery", "v": 13.64, "rank": 3, "trend": "+1", "kev": 0}, {"l": "CWE-862", "id": "CWE-862", "name_pt": "Autorização Ausente", "name": "Missing Authorization", "v": 13.28, "rank": 4, "trend": "+5", "kev": 0}, {"l": "CWE-787", "id": "CWE-787", "name_pt": "Escrita Fora dos Limites (OOB Write)", "name": "Out-of-bounds Write", "v": 12.68, "rank": 5, "trend": "-3", "kev": 12}, {"l": "CWE-22", "id": "CWE-22", "name_pt": "Path Traversal", "name": "Path Traversal", "v": 8.99, "rank": 6, "trend": "-1", "kev": 10}, {"l": "CWE-416", "id": "CWE-416", "name_pt": "Use After Free", "name": "Use After Free", "v": 8.47, "rank": 7, "trend": "+1", "kev": 14}, {"l": "CWE-125", "id": "CWE-125", "name_pt": "Leitura Fora dos Limites (OOB Read)", "name": "Out-of-bounds Read", "v": 7.88, "rank": 8, "trend": "-2", "kev": 3}, {"l": "CWE-78", "id": "CWE-78", "name_pt": "Injeção de Comando OS", "name": "OS Command Injection", "v": 7.85, "rank": 9, "trend": "-2", "kev": 20}, {"l": "CWE-94", "id": "CWE-94", "name_pt": "Injeção de Código", "name": "Code Injection", "v": 7.57, "rank": 10, "trend": "+1", "kev": 7}, {"l": "CWE-120", "id": "CWE-120", "name_pt": "Buffer Overflow Clássico", "name": "Classic Buffer Overflow", "v": 6.96, "rank": 11, "trend": "N/A", "kev": 0}, {"l": "CWE-434", "id": "CWE-434", "name_pt": "Upload Irrestrito de Arquivo", "name": "Unrestricted Upload", "v": 6.87, "rank": 12, "trend": "-2", "kev": 4}, {"l": "CWE-476", "id": "CWE-476", "name_pt": "Desreferência de Ponteiro NULL", "name": "NULL Pointer Dereference", "v": 6.41, "rank": 13, "trend": "+8", "kev": 0}, {"l": "CWE-121", "id": "CWE-121", "name_pt": "Stack Buffer Overflow", "name": "Stack-based Buffer Overflow", "v": 5.75, "rank": 14, "trend": "N/A", "kev": 4}, {"l": "CWE-502", "id": "CWE-502", "name_pt": "Desserialização de Dados Não Confiáveis", "name": "Deserialization of Untrusted Data", "v": 5.23, "rank": 15, "trend": "+1", "kev": 11}, {"l": "CWE-122", "id": "CWE-122", "name_pt": "Heap Buffer Overflow", "name": "Heap-based Buffer Overflow", "v": 5.21, "rank": 16, "trend": "N/A", "kev": 6}, {"l": "CWE-863", "id": "CWE-863", "name_pt": "Autorização Incorreta", "name": "Incorrect Authorization", "v": 4.14, "rank": 17, "trend": "+1", "kev": 4}, {"l": "CWE-20", "id": "CWE-20", "name_pt": "Validação de Entrada Inadequada", "name": "Improper Input Validation", "v": 4.09, "rank": 18, "trend": "-6", "kev": 2}, {"l": "CWE-284", "id": "CWE-284", "name_pt": "Controle de Acesso Inadequado", "name": "Improper Access Control", "v": 4.07, "rank": 19, "trend": "N/A", "kev": 1}, {"l": "CWE-200", "id": "CWE-200", "name_pt": "Exposição de Informação Sensível", "name": "Exposure of Sensitive Information", "v": 4.01, "rank": 20, "trend": "-3", "kev": 1}, {"l": "CWE-306", "id": "CWE-306", "name_pt": "Autenticação Ausente", "name": "Missing Authentication", "v": 3.47, "rank": 21, "trend": "+4", "kev": 11}, {"l": "CWE-918", "id": "CWE-918", "name_pt": "Server-Side Request Forgery (SSRF)", "name": "Server-Side Request Forgery", "v": 3.36, "rank": 22, "trend": "-3", "kev": 0}, {"l": "CWE-77", "id": "CWE-77", "name_pt": "Injeção de Comando", "name": "Command Injection", "v": 3.15, "rank": 23, "trend": "-10", "kev": 2}, {"l": "CWE-639", "id": "CWE-639", "name_pt": "Bypass de Autorização via Chave do Usuário", "name": "Authorization Bypass via User Key", "v": 2.62, "rank": 24, "trend": "+6", "kev": 0}, {"l": "CWE-770", "id": "CWE-770", "name_pt": "Alocação Sem Limites", "name": "Allocation Without Limits", "v": 2.54, "rank": 25, "trend": "+1", "kev": 0}]</script>
 <script type="application/json" id="data-owasp-chart">[{"l": "A01", "v": 7}, {"l": "A02", "v": 2}, {"l": "A03", "v": 2}, {"l": "A04", "v": 2}, {"l": "A05", "v": 6}, {"l": "A06", "v": 2}, {"l": "A07", "v": 2}, {"l": "A08", "v": 1}, {"l": "A09", "v": 1}, {"l": "A10", "v": 4}]</script>
 <script type="application/json" id="data-kev-chart">[{"l": "#78", "v": 20, "id": "CWE-78"}, {"l": "#416", "v": 14, "id": "CWE-416"}, {"l": "#787", "v": 12, "id": "CWE-787"}, {"l": "#502", "v": 11, "id": "CWE-502"}, {"l": "#306", "v": 11, "id": "CWE-306"}, {"l": "#22", "v": 10, "id": "CWE-22"}, {"l": "#79", "v": 7, "id": "CWE-79"}, {"l": "#94", "v": 7, "id": "CWE-94"}, {"l": "#122", "v": 6, "id": "CWE-122"}, {"l": "#89", "v": 4, "id": "CWE-89"}, {"l": "#434", "v": 4, "id": "CWE-434"}, {"l": "#121", "v": 4, "id": "CWE-121"}]</script>
-<script type="application/json" id="data-prev-chart">[{"l": "A01", "v": 3.73}, {"l": "A04", "v": 3.8}, {"l": "A02", "v": 3.0}]</script>
+<script type="application/json" id="data-prev-chart">[{"l": "A01", "name": "Broken Access Control", "cwes": "40 CWEs", "v": 3.73}, {"l": "A02", "name": "Security Misconfiguration", "cwes": "16 CWEs", "v": 3.0}, {"l": "A04", "name": "Cryptographic Failures", "cwes": "32 CWEs", "v": 3.8}]</script>
 <script type="application/json" id="data-breach-chart">[{"l": "Credenciais", "v": 28}, {"l": "Phishing", "v": 22}, {"l": "Vuln. explorada", "v": 18}, {"l": "Misconfig", "v": 15}, {"l": "Malware", "v": 10}, {"l": "Outros", "v": 7}]</script>
 <script type="application/json" id="data-delta-chart">[{"l": "#77", "v": 10, "dir": "down", "id": "CWE-77", "rank": 23, "prev": 13, "name_pt": "Injeção de Comando", "short": "CWE-77"}, {"l": "#476", "v": 8, "dir": "up", "id": "CWE-476", "rank": 13, "prev": 21, "name_pt": "Desreferência de Ponteiro NULL", "short": "CWE-476"}, {"l": "#20", "v": 6, "dir": "down", "id": "CWE-20", "rank": 18, "prev": 12, "name_pt": "Validação de Entrada Inadequada", "short": "CWE-20"}, {"l": "#639", "v": 6, "dir": "up", "id": "CWE-639", "rank": 24, "prev": 30, "name_pt": "Bypass de Autorização via Chave do Usuário", "short": "CWE-639"}, {"l": "#862", "v": 5, "dir": "up", "id": "CWE-862", "rank": 4, "prev": 9, "name_pt": "Autorização Ausente", "short": "CWE-862"}, {"l": "#306", "v": 4, "dir": "up", "id": "CWE-306", "rank": 21, "prev": 25, "name_pt": "Autenticação Ausente", "short": "CWE-306"}, {"l": "#787", "v": 3, "dir": "down", "id": "CWE-787", "rank": 5, "prev": 2, "name_pt": "Escrita Fora dos Limites (OOB Write)", "short": "CWE-787"}, {"l": "#200", "v": 3, "dir": "down", "id": "CWE-200", "rank": 20, "prev": 17, "name_pt": "Exposição de Informação Sensível", "short": "CWE-200"}, {"l": "#918", "v": 3, "dir": "down", "id": "CWE-918", "rank": 22, "prev": 19, "name_pt": "Server-Side Request Forgery (SSRF)", "short": "CWE-918"}, {"l": "#125", "v": 2, "dir": "down", "id": "CWE-125", "rank": 8, "prev": 6, "name_pt": "Leitura Fora dos Limites (OOB Read)", "short": "CWE-125"}]</script>
 <script type="application/json" id="data-terminals">{"sqli": {"title": "SQLi — login.ts", "owasp": "A05", "cwe": "CWE-89", "welcome": "Lab Juice Shop · SQL Injection\nDigite help ou experimente curl/sqlmap.", "cmds": {"help": "Comandos: curl, sqlmap, cat routes/login.ts, fix", "cat routes/login.ts": "L34: sequelize.query(`SELECT * FROM Users WHERE email = '${email}'...`)", "curl -X POST http://localhost:3000/rest/user/login -H 'Content-Type: application/json' -d '{\"email\":\"'\\'' OR 1=1--\",\"password\":\"x\"}'": "HTTP/1.1 200 OK\n{\"authentication\":{\"token\":\"eyJhbG...\",\"bid\":1}}\n# Bypass — query retornou primeiro user", "sqlmap -u 'http://localhost:3000/rest/user/login' --data='{\"email\":\"*\",\"password\":\"x\"}' --dbms=sqlite --batch": "Parameter: email (JSON)\nType: boolean-based blind + UNION\nPayload: email=' OR 1=1--\n[INFO] DBMS: SQLite", "fix": "# Correção:\nUserModel.findOne({ where: { email, password: hash(pw) } })\n# + prepared statements, least privilege DB user"}}, "idor": {"title": "IDOR — basket.ts", "owasp": "A01", "cwe": "CWE-639", "welcome": "Lab IDOR · Broken Object Level Authorization", "cmds": {"help": "Comandos: curl (com token), ffuf, fix", "curl -H 'Authorization: Bearer TOKEN' http://localhost:3000/rest/basket/1": "{\"id\":1,\"UserId\":1,\"Products\":[{\"id\":1,\"name\":\"Apple Juice\"}]}", "curl -H 'Authorization: Bearer TOKEN' http://localhost:3000/rest/basket/2": "{\"id\":2,\"UserId\":2,\"Products\":[...]}  # Carrinho de OUTRO usuário", "ffuf -u http://localhost:3000/rest/basket/FUZZ -H 'Authorization: Bearer TOKEN' -w ids.txt": "basket/1 [200] basket/2 [200] basket/3 [200]  # Todos acessíveis", "fix": "if (parseInt(id) !== user.bid) return res.status(403).json({ error: 'Forbidden' })"}}, "xss": {"title": "XSS — busca e feedback", "owasp": "A05", "cwe": "CWE-79", "welcome": "Lab XSS · CWE #1 MITRE 2025 (score 60.38)", "cmds": {"help": "Comandos: curl, payload, fix, csp", "curl 'http://localhost:3000/rest/products/search?q=%3Cimg%20src=x%20onerror=alert(1)%3E'": "HTML refletido sem encode no campo de busca", "payload": "<img src=x onerror=alert(document.cookie)>\n<svg onload=alert(1)>", "fix": "res.json({ results })  // API JSON, sem HTML\n+ CSP: default-src 'self'; script-src 'nonce-{random}'", "csp": "Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-abc'; report-uri /csp-report"}}, "jwt": {"title": "JWT — insecurity.ts", "owasp": "A04", "cwe": "CWE-347", "welcome": "Lab JWT · weak crypto + alg confusion", "cmds": {"help": "Comandos: decode, alg-none, fix", "decode eyJhbG...": "Header: {\"alg\":\"RS256\",\"typ\":\"JWT\"}\nPayload: {\"data\":{\"email\":\"user@test.com\"}}", "alg-none": "# Troque header para {\"alg\":\"none\"}\n# Remova assinatura\n# Servidor aceita se verify() não fixa algorithms", "fix": "jwt.verify(token, publicKey, { algorithms: ['RS256'], issuer: 'juice-shop' })"}}, "supply": {"title": "Supply Chain — npm audit", "owasp": "A03", "cwe": "CWE-829", "welcome": "Lab Supply Chain · SBOM + audit", "cmds": {"help": "Comandos: npm audit, cyclonedx, slsa", "npm audit": "sanitize-html <2.0.0  XSS\ndottie <2.0.0  Prototype pollution\njsonwebtoken <5.0.0  JWT bypass", "npm audit fix --dry-run": "Would update 47 packages", "cyclonedx-npm --output-file sbom.json": "SBOM gerado — 312 componentes", "slsa": "SLSA L3: hermetic build + provenance assinada\nSigstore cosign verify artifact"}}, "ssrf": {"title": "SSRF — profile image", "owasp": "A01", "cwe": "CWE-918", "welcome": "Lab SSRF · metadata cloud", "cmds": {"help": "Comandos: curl, metadata, fix", "curl -X POST http://localhost:3000/profile/imageUrl -d '{\"imageUrl\":\"http://169.254.169.254/latest/meta-data/\"}'": "Servidor faz fetch interno — resposta AWS metadata (se cloud)", "metadata": "169.254.169.254 — link-local AWS\nmetadata.google.internal — GCP", "fix": "Allowlist de hostnames + block private IP ranges + sem redirects"}}, "auth": {"title": "Auth — login + admin", "owasp": "A07", "cwe": "CWE-306", "welcome": "Lab Authentication · CWE-306 Missing Auth\nClique nos comandos ou ▶ Demo.", "cmds": {"help": "Comandos: curl admin, hydra, jwt, fix", "curl http://localhost:3000/rest/admin/application-configuration": "HTTP/1.1 200 OK\n{\"config\":{\"server\":{\"port\":3000},\"security\":{\"domain\":\"juice\"}}}\n# SEM TOKEN — CWE-306", "hydra -l admin -P rockyou.txt localhost -s 3000 http-post-form '/rest/user/login:email=^USER^&password=^PASS^:F=Invalid'": "[3000][http-post-form] host: localhost   login: admin   password: admin123\n# Brute force sem rate limit", "curl -X POST http://localhost:3000/rest/user/login -H 'Content-Type: application/json' -d '{\"email\":\"admin@juice-sh.op\",\"password\":\"admin123\"}'": "HTTP/1.1 200 OK\n{\"authentication\":{\"token\":\"eyJhbGciOiJSUzI1NiIs...\",\"bid\":1,\"umail\":\"admin@juice-sh.op\"}}", "fix": "# 1. Auth middleware em TODA rota /admin\n# 2. MFA + rate limit 5/min no login\n# 3. bcrypt rounds >= 12\n# 4. jwt.verify(..., { algorithms: ['RS256'] })"}}}</script>
@@ -17256,21 +17256,61 @@ def login(): ...</code></pre>
 
   function chartPointer(canvas, e) {
     var rect = canvas.getBoundingClientRect();
-    return { x: e.clientX - rect.left, y: e.clientY - rect.top, cx: e.clientX, cy: e.clientY };
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var logicalW = canvas.width / dpr;
+    var logicalH = canvas.height / dpr;
+    if (!rect.width || !rect.height) {
+      return { x: 0, y: 0, cx: e.clientX, cy: e.clientY };
+    }
+    return {
+      x: (e.clientX - rect.left) * (logicalW / rect.width),
+      y: (e.clientY - rect.top) * (logicalH / rect.height),
+      cx: e.clientX,
+      cy: e.clientY
+    };
   }
 
-  function setupCanvas(canvas, height) {
+  function chartInnerWidth(node) {
+    if (!node) return 0;
+    var style = window.getComputedStyle(node);
+    var padL = parseFloat(style.paddingLeft) || 0;
+    var padR = parseFloat(style.paddingRight) || 0;
+    var inner = node.clientWidth - padL - padR;
+    if (inner >= 8) return Math.round(inner);
+    var rect = node.getBoundingClientRect();
+    return rect.width >= 8 ? Math.round(rect.width - padL - padR) : 0;
+  }
+
+  function chartBoxWidth(canvas) {
+    var node = canvas.parentElement;
+    while (node) {
+      var w = chartInnerWidth(node);
+      if (w >= 8) return w;
+      node = node.parentElement;
+    }
+    var rect = canvas.getBoundingClientRect();
+    return rect.width >= 8 ? Math.round(rect.width) : 320;
+  }
+
+  function applyCanvasSize(canvas, w, h) {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var parent = canvas.parentElement;
-    var w = canvas.offsetWidth || (parent && parent.clientWidth) || 320;
-    var h = height || parseInt(canvas.getAttribute('height'), 10) || 240;
+    w = Math.max(1, Math.round(w));
+    h = Math.max(1, Math.round(h));
     canvas.width = Math.floor(w * dpr);
     canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + 'px';
     canvas.style.height = h + 'px';
-    canvas.setAttribute('height', String(h));
+    canvas.style.maxWidth = '100%';
+    canvas.style.display = 'block';
     var ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     return { ctx: ctx, w: w, h: h };
+  }
+
+  function setupCanvas(canvas, height) {
+    var w = chartBoxWidth(canvas);
+    var h = height || parseInt(canvas.getAttribute('height'), 10) || 240;
+    return applyCanvasSize(canvas, w, h);
   }
 
   function chartCanvasHeight(count, rowH, pad) {
@@ -17279,9 +17319,9 @@ def login(): ...</code></pre>
 
   function setupCanvasSquare(canvas) {
     var wrap = canvas.parentElement;
-    var w = (wrap && wrap.clientWidth) ? wrap.clientWidth : (canvas.offsetWidth || 280);
-    var size = Math.max(220, Math.min(w, 360));
-    return setupCanvas(canvas, size);
+    var raw = wrap ? (wrap.clientWidth || chartBoxWidth(canvas)) : chartBoxWidth(canvas);
+    var size = Math.max(220, Math.min(Math.round(raw) || 280, 360));
+    return applyCanvasSize(canvas, size, size);
   }
 
   function sortChartDesc(data) {
@@ -17330,6 +17370,7 @@ def login(): ...</code></pre>
 
   function legendValue(state, d) {
     if (state.type === 'donut') return Math.round((d.v / state.total) * 100) + '%';
+    if (state.type === 'hbar' && d.survey) return 'survey';
     if (state.type === 'hbar') return d.v + (state.opts.suffix || '');
     if (state.type === 'delta') return (d.dir === 'up' ? '↑' : '↓') + d.v;
     if (state.type === 'trend') return '#' + d.rank;
@@ -17345,6 +17386,7 @@ def login(): ...</code></pre>
   function chartLegendSub(state, d) {
     if (state.type === 'delta') return '#' + d.prev + ' → #' + d.rank + ' · ' + (d.id || '');
     if (state.type === 'donut') return d.v + ' correlação' + (d.v === 1 ? '' : 'ões');
+    if (state.opts.owaspPrev && d.name) return d.name + (d.cwes && d.cwes != '—' ? ' · ' + d.cwes : '');
     if (state.opts.cweClick && d.id) return d.id + (d.rank ? ' · MITRE #' + d.rank : '');
     return '';
   }
@@ -17487,6 +17529,7 @@ def login(): ...</code></pre>
     };
     chartRegistry[canvasId] = state;
     bindChart(canvasId, state);
+    observeChartCanvas(canvasId);
     animateChart(state, 0.04);
   }
 
@@ -17545,7 +17588,7 @@ def login(): ...</code></pre>
     var canvas = document.getElementById(canvasId);
     if (!canvas || !data.length) return;
     opts = opts || {};
-    var sorted = sortChartDesc(data);
+    var sorted = opts.preserveOrder ? data.slice() : sortChartDesc(data);
     var rowH = opts.cweRanked ? 42 : 32;
     opts.height = chartCanvasHeight(sorted.length, rowH, 28);
     var state = {
@@ -17568,12 +17611,19 @@ def login(): ...</code></pre>
             (d.kev ? '<span>' + d.kev + ' CVEs no CISA KEV</span>' : '') +
             '<span>Clique para abrir o painel da fraqueza</span>';
         }
+        if (opts.owaspPrev && d.survey) {
+          return '<strong>' + chartEsc(d.l) + ' — ' + chartEsc(d.name || '') + '</strong><span>Sem % publicado em testes automatizados</span><span>Ranking via community survey OWASP</span>';
+        }
+        if (opts.owaspPrev) {
+          return '<strong>' + chartEsc(d.l) + ' — ' + chartEsc(d.name || '') + '</strong><span>Prevalência: <em>' + d.v + (opts.suffix || '') + '</em></span><span>OWASP Top 10:2025 · 2,8M+ apps testadas</span>';
+        }
         return '<strong>' + chartEsc(d.l) + '</strong><span>Prevalência: <em>' + d.v + (opts.suffix || '') + '</em></span><span>OWASP Top 10:2025 · 2,8M+ apps</span>';
       },
       onClick: opts.cweClick ? function (d) { filterCweFromChart(d.id); } : function (d) { filterOwaspFromChart(d.l); }
     };
     chartRegistry[canvasId] = state;
     bindChart(canvasId, state);
+    observeChartCanvas(canvasId);
     animateChart(state, 0.05);
   }
 
@@ -17586,12 +17636,13 @@ def login(): ...</code></pre>
     if (state.opts.height !== targetH) state.opts.height = targetH;
     var dims = setupCanvas(canvas, targetH);
     var ctx = dims.ctx, w = dims.w, h = dims.h;
-    var max = Math.max.apply(null, data.map(function (d) { return d.v; })) || 1;
+    var published = data.filter(function (d) { return !d.survey && d.v > 0; });
+    var max = Math.max.apply(null, (published.length ? published : data).map(function (d) { return d.v; })) || 1;
     var pad = { l: 10, r: 10, t: 12, b: 12 };
     var ranked = !!state.opts.ranked;
     var cweMinimal = !!state.opts.cweRanked;
     var rankW = ranked ? 30 : 0;
-    var valW = 64;
+    var valW = state.opts.owaspPrev ? 72 : 64;
     var barX = pad.l + rankW + (cweMinimal ? 6 : 40);
     var barMax = Math.max(80, w - barX - pad.r - valW);
     state.regions = [];
@@ -17605,7 +17656,8 @@ def login(): ...</code></pre>
       ctx.stroke();
     }
     data.forEach(function (d, i) {
-      var bw = (d.v / max) * barMax * state.progress;
+      var isSurvey = !!d.survey;
+      var bw = isSurvey ? 0 : (d.v / max) * barMax * state.progress;
       var y = pad.t + i * rowH;
       var hot = state.hover === i;
       var dim = state.hover >= 0 && !hot;
@@ -17629,22 +17681,30 @@ def login(): ...</code></pre>
       }
       ctx.fillStyle = chartInk(0.07);
       ctx.fillRect(barX, barTop, barMax, barHt);
-      var grad = ctx.createLinearGradient(barX, y, barX + Math.max(bw, 1), y);
-      grad.addColorStop(0, hot ? chartHotInk() : barCol);
-      grad.addColorStop(1, hot ? chartHexAlpha(barCol, 0.38) : chartHexAlpha(barCol, 0.14));
-      ctx.fillStyle = grad;
-      roundBar(ctx, barX, barTop, Math.max(bw, hot ? 4 : 0), barHt, 5);
-      if (hot) {
-        ctx.strokeStyle = barCol;
-        ctx.lineWidth = 1.5;
-        ctx.strokeRect(barX + 0.5, barTop + 0.5, Math.max(bw, 3) - 1, barHt - 1);
+      if (!isSurvey) {
+        var grad = ctx.createLinearGradient(barX, y, barX + Math.max(bw, 1), y);
+        grad.addColorStop(0, hot ? chartHotInk() : barCol);
+        grad.addColorStop(1, hot ? chartHexAlpha(barCol, 0.38) : chartHexAlpha(barCol, 0.14));
+        ctx.fillStyle = grad;
+        roundBar(ctx, barX, barTop, Math.max(bw, hot ? 4 : 0), barHt, 5);
+        if (hot) {
+          ctx.strokeStyle = barCol;
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(barX + 0.5, barTop + 0.5, Math.max(bw, 3) - 1, barHt - 1);
+        }
+      } else {
+        ctx.strokeStyle = chartInk(hot ? 0.35 : 0.18);
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.strokeRect(barX + 0.5, barTop + 0.5, barMax - 1, barHt - 1);
+        ctx.setLineDash([]);
       }
-      ctx.fillStyle = hot ? chartHotInk() : barCol;
+      ctx.fillStyle = hot ? chartHotInk() : (isSurvey ? chartInk(0.55) : barCol);
       ctx.font = 'bold 11px JetBrains Mono';
       ctx.textAlign = 'left';
-      var valX = barX + Math.max(bw, 0) + 8;
-      if (valX + 44 > w - pad.r) valX = w - pad.r - 44;
-      ctx.fillText(d.v + (state.opts.suffix || ''), valX, y + rowH * 0.58);
+      var valX = isSurvey ? barX + 8 : barX + Math.max(bw, 0) + 8;
+      if (valX + 56 > w - pad.r) valX = w - pad.r - 56;
+      ctx.fillText(isSurvey ? 'survey' : (d.v + (state.opts.suffix || '')), valX, y + rowH * 0.58);
       ctx.textAlign = 'left';
       ctx.globalAlpha = 1;
       if (state.progress >= 1) state.regions.push({ x: 0, y: y, w: w, h: rowH, i: i });
@@ -17686,7 +17746,32 @@ def login(): ...</code></pre>
     };
     chartRegistry[canvasId] = state;
     bindChart(canvasId, state);
-    animateChart(state, 0.035);
+    observeChartCanvas(canvasId);
+    requestAnimationFrame(function () { animateChart(state, 0.035); });
+  }
+
+  function observeChartCanvas(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas || canvas._sizeObserved || !('ResizeObserver' in window)) return;
+    var parent = canvas.parentElement;
+    if (!parent) return;
+    canvas._sizeObserved = true;
+    var resizeTimer;
+    var ro = new ResizeObserver(function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        var s = chartRegistry[canvasId];
+        if (s && s.ready && s.redraw) s.redraw();
+      }, 80);
+    });
+    ro.observe(parent);
+  }
+
+  function redrawAllCharts() {
+    Object.keys(chartRegistry).forEach(function (id) {
+      var s = chartRegistry[id];
+      if (s && s.ready && s.redraw) s.redraw();
+    });
   }
 
   function drawDonutChart(state) {
@@ -17800,6 +17885,7 @@ def login(): ...</code></pre>
     };
     chartRegistry[canvasId] = state;
     bindChart(canvasId, state);
+    observeChartCanvas(canvasId);
     animateChart(state, 0.05);
   }
 
@@ -17936,15 +18022,30 @@ def login(): ...</code></pre>
     });
   }
 
+  function chartLayoutReady(canvas) {
+    var parent = canvas.parentElement;
+    if (!parent) return true;
+    if (parent.classList.contains('chart-wrap') || parent.classList.contains('chart-plot-ranked') || parent.classList.contains('chart-body-bar') || parent.classList.contains('chart-plot')) {
+      return parent.getBoundingClientRect().width >= 8;
+    }
+    return true;
+  }
+
   function initChart(canvasId) {
     if (chartInited[canvasId]) return;
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    if (!chartLayoutReady(canvas)) {
+      requestAnimationFrame(function () { initChart(canvasId); });
+      return;
+    }
     chartInited[canvasId] = true;
     if (canvasId === 'chart-cwe-scores' && CWE_CHART.length) mountHBarChart(canvasId, CWE_CHART.slice(0, 10), { color: '#e040a0', suffix: ' pts', ranked: true, cweClick: true, cweRanked: true });
     else if (canvasId === 'chart-owasp-donut' && OWASP_CHART.length) {
       var owTotal = OWASP_CHART.reduce(function (a, d) { return a + d.v; }, 0);
       mountDonutChart(canvasId, OWASP_CHART, { owaspClick: true, centerIdle: { main: String(owTotal), sub: 'correlações OWASP↔CWE' } });
     } else if (canvasId === 'chart-cwe-kev' && KEV_CHART.length) mountBarChart(canvasId, KEV_CHART, { color: '#ff6b35', height: 260, unit: ' KEV', cweClick: true, compactLabels: true });
-    else if (canvasId === 'chart-owasp-prev' && PREV_CHART.length) mountHBarChart(canvasId, PREV_CHART, { color: '#5ce1e6', height: 340, suffix: '%', ranked: true });
+    else if (canvasId === 'chart-owasp-prev' && PREV_CHART.length) mountHBarChart(canvasId, PREV_CHART, { color: '#5ce1e6', suffix: '%', ranked: true, owaspPrev: true });
     else if (canvasId === 'chart-breach-vectors' && BREACH_CHART.length) mountDonutChart(canvasId, BREACH_CHART, { centerIdle: { main: 'DBIR', sub: 'Vetores · 2025' } });
     else if (canvasId === 'chart-cwe-delta' && DELTA_CHART.length) mountDeltaChart(canvasId, DELTA_CHART);
   }
@@ -17972,12 +18073,10 @@ def login(): ...</code></pre>
   var chartResizeTimer;
   window.addEventListener('resize', function () {
     clearTimeout(chartResizeTimer);
-    chartResizeTimer = setTimeout(function () {
-      Object.keys(chartRegistry).forEach(function (id) {
-        var s = chartRegistry[id];
-        if (s && s.ready) s.redraw();
-      });
-    }, 150);
+    chartResizeTimer = setTimeout(redrawAllCharts, 150);
+  });
+  window.addEventListener('load', function () {
+    setTimeout(redrawAllCharts, 120);
   });
 
   // Inicializar componentes split-panel
