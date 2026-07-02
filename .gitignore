@@ -1,5 +1,6 @@
-node_modules/
-__pycache__/
-*.pyc
-.DS_Store
-.fonts-embedded.css
+# Repositório de publicação — apenas o HTML autocontido vai pro GitHub
+*
+!.gitignore
+!OWASP-CWE/
+OWASP-CWE/*
+!OWASP-CWE/owasp-cwe-guia.html
