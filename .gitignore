@@ -4,3 +4,6 @@
 !OWASP-CWE/
 OWASP-CWE/*
 !OWASP-CWE/owasp-cwe-guia.html
+!SEC-COD-PRAT/
+SEC-COD-PRAT/*
+!SEC-COD-PRAT/secure-coding-practices.html
