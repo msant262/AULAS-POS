@@ -12,39 +12,107 @@
   --ok-orange:oklch(72% .19 45);--ok-magenta:oklch(70% .27 340);--ok-cyan:oklch(82% .14 200);--ok-success:oklch(78% .16 150);--ok-warning:oklch(82% .16 85);--ok-danger:oklch(65% .22 25);
   --ok-accent:var(--ok-orange);--ok-accent-2:var(--ok-magenta);--ok-glow:.55;--ok-glow-px:calc(24px * var(--ok-glow));
   --ok-display:"Space Grotesk",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--ok-mono:"JetBrains Mono","SFMono-Regular",Consolas,monospace;
-  --r0:0;--r1:2px;--r2:4px;--r3:8px;--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;--s8:40px;--s9:56px;
+  --ok-r-0:0;--ok-r-1:2px;--ok-r-2:4px;--ok-r-3:8px;--ok-r-pill:999px;--ok-s-1:4px;--ok-s-2:8px;--ok-s-3:12px;--ok-s-4:16px;--ok-s-5:20px;--ok-s-6:24px;--ok-s-7:32px;--ok-s-8:40px;--ok-s-9:56px;--ok-s-10:72px;--ok-s-11:96px;--ok-s-12:128px;
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}body.ok{margin:0;background:radial-gradient(900px 500px at 90% 0%,color-mix(in oklch,var(--ok-magenta) 10%,transparent),transparent 65%),radial-gradient(700px 400px at -5% 30%,color-mix(in oklch,var(--ok-cyan) 8%,transparent),transparent 65%),radial-gradient(700px 420px at 50% 90%,color-mix(in oklch,var(--ok-orange) 6%,transparent),transparent 72%),var(--ok-bg-0);background-attachment:fixed;color:var(--ok-fg);font-family:var(--ok-display);line-height:1.5;min-height:100vh;overflow-x:hidden}body.ok:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;background-image:linear-gradient(var(--ok-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ok-grid) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 30%,black 30%,transparent 85%)}body.ok:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(255,255,255,.012) 2px 3px);mix-blend-mode:overlay}body.ok>*{position:relative;z-index:2}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}em{font-style:normal;color:var(--ok-accent)}strong{color:var(--ok-fg)}
 body.theme-light{--ok-bg-0:#f6f7fb;--ok-bg-1:#ffffff;--ok-bg-2:#edf0f6;--ok-bg-3:#e2e7f0;--ok-line:#cdd4df;--ok-line-soft:#dce2ea;--ok-grid:rgba(20,27,38,.06);--ok-fg:#111827;--ok-fg-soft:#344054;--ok-fg-mute:#667085;--ok-fg-dim:#98a2b3}
-.toolbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px clamp(14px,3vw,36px);border-bottom:1px solid var(--ok-line);background:color-mix(in srgb,var(--ok-bg-1) 94%,transparent);backdrop-filter:blur(14px)}.brand{font-family:var(--ok-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-accent);margin-right:auto;white-space:nowrap}.search{width:min(380px,42vw);background:var(--ok-bg-0);border:1px solid var(--ok-line);color:var(--ok-fg);padding:10px 12px;border-radius:var(--r1);font-family:var(--ok-mono);font-size:12px}.search:focus{outline:1px solid var(--ok-cyan);border-color:var(--ok-cyan)}
-.layout{display:grid;grid-template-columns:280px minmax(0,1fr);padding-top:56px;transition:grid-template-columns .25s}.sidebar{position:sticky;top:56px;height:calc(100vh - 56px);overflow:auto;border-right:1px solid var(--ok-line);background:linear-gradient(180deg,color-mix(in oklch,var(--ok-bg-1) 96%,var(--ok-cyan) 4%),color-mix(in oklch,var(--ok-bg-0) 98%,var(--ok-magenta) 2%))}.sidebar-head{padding:16px 14px;border-bottom:1px solid var(--ok-line-soft);background:linear-gradient(135deg,color-mix(in oklch,var(--ok-accent) 12%,transparent),color-mix(in oklch,var(--ok-magenta) 8%,transparent),color-mix(in oklch,var(--ok-cyan) 6%,transparent))}.sidebar-kicker,.mini-label{display:block;font-family:var(--ok-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ok-cyan);margin-bottom:5px}.sidebar strong{display:block;font-size:15px}.sidebar small{display:block;color:var(--ok-fg-mute);font-family:var(--ok-mono);font-size:10px}.sidebar nav{display:flex;flex-direction:column;padding:10px}.sidebar nav a{font-family:var(--ok-mono);font-size:12px;color:var(--ok-fg-soft);padding:10px 12px;border:1px solid transparent;border-radius:var(--r1)}.sidebar nav a:hover,.sidebar nav a.active{color:var(--ok-fg);border-color:var(--ok-line);background:var(--ok-bg-2)}body.sidebar-collapsed .layout{grid-template-columns:0 minmax(0,1fr)}body.sidebar-collapsed .sidebar{opacity:0;pointer-events:none;overflow:hidden}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px clamp(14px,3vw,36px);border-bottom:1px solid var(--ok-line);background:color-mix(in srgb,var(--ok-bg-1) 94%,transparent);backdrop-filter:blur(14px)}.brand{font-family:var(--ok-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-accent);margin-right:auto;white-space:nowrap}.search{width:min(380px,42vw);background:var(--ok-bg-0);border:1px solid var(--ok-line);color:var(--ok-fg);padding:10px 12px;border-radius:var(--ok-r-1);font-family:var(--ok-mono);font-size:12px}.search:focus{outline:1px solid var(--ok-cyan);border-color:var(--ok-cyan)}
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);padding-top:56px;transition:grid-template-columns .25s}.sidebar{position:sticky;top:56px;height:calc(100vh - 56px);overflow:auto;border-right:1px solid var(--ok-line);background:linear-gradient(180deg,color-mix(in oklch,var(--ok-bg-1) 96%,var(--ok-cyan) 4%),color-mix(in oklch,var(--ok-bg-0) 98%,var(--ok-magenta) 2%))}.sidebar-head{padding:16px 14px;border-bottom:1px solid var(--ok-line-soft);background:linear-gradient(135deg,color-mix(in oklch,var(--ok-accent) 12%,transparent),color-mix(in oklch,var(--ok-magenta) 8%,transparent),color-mix(in oklch,var(--ok-cyan) 6%,transparent))}.sidebar-kicker,.mini-label{display:block;font-family:var(--ok-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ok-cyan);margin-bottom:5px}.sidebar strong{display:block;font-size:15px}.sidebar small{display:block;color:var(--ok-fg-mute);font-family:var(--ok-mono);font-size:10px}.sidebar nav{display:flex;flex-direction:column;padding:10px}.sidebar nav a{font-family:var(--ok-mono);font-size:12px;color:var(--ok-fg-soft);padding:10px 12px;border:1px solid transparent;border-radius:var(--ok-r-1)}.sidebar nav a:hover,.sidebar nav a.active{color:var(--ok-fg);border-color:var(--ok-line);background:var(--ok-bg-2)}body.sidebar-collapsed .layout{grid-template-columns:0 minmax(0,1fr)}body.sidebar-collapsed .sidebar{opacity:0;pointer-events:none;overflow:hidden}
 main{min-width:0}.lesson-sec{padding:clamp(52px,7vw,96px) clamp(18px,5vw,72px);border-bottom:1px solid var(--ok-line-soft);scroll-margin-top:70px}.hero{padding-top:clamp(64px,8vw,112px)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);gap:clamp(28px,5vw,72px);align-items:center}.eyebrow,.section-kicker{font-family:var(--ok-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ok-accent);display:inline-flex;align-items:center;gap:12px}.eyebrow:before,.section-kicker:before{content:"";width:24px;height:1px;background:currentColor}.section-kicker b{color:var(--ok-cyan)}h1{font-size:clamp(48px,8vw,104px);line-height:.94;letter-spacing:0;margin:22px 0;font-weight:600;max-width:12ch}h2{font-size:clamp(30px,4vw,56px);line-height:1.04;letter-spacing:0;margin:12px 0 0;font-weight:560}h3{letter-spacing:0}.lead{font-size:clamp(18px,2vw,24px);line-height:1.45;color:var(--ok-fg-soft);max-width:62ch}.hero-actions,.card-actions,.filter-bar,.tabs{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn,.icon-btn,.chip,.tab{border:1px solid var(--ok-line);background:transparent;color:var(--ok-fg);font-family:var(--ok-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:var(--r1);transition:.16s}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px}.btn.sm{padding:8px 12px;font-size:10px}.btn.solid{border-color:var(--ok-accent);background:var(--ok-accent);color:var(--ok-bg-0);font-weight:700}.btn.cyan{border-color:var(--ok-cyan);color:var(--ok-cyan)}.btn.ghost{color:var(--ok-fg-soft)}.btn:hover,.chip:hover,.tab:hover,.icon-btn:hover{border-color:var(--ok-cyan);box-shadow:0 0 var(--ok-glow-px) -8px var(--ok-cyan);color:var(--ok-fg)}.icon-btn{width:38px;height:38px;display:grid;place-items:center}.chip,.tab{padding:9px 12px}.chip.active,.tab.active{background:var(--ok-cyan);border-color:var(--ok-cyan);color:var(--ok-bg-0);font-weight:700}
-.hero-console,.diff-panel,.chart-card,.practice-card,.code-case,.lab-shell,.agent-lab,.review-shell,.pipeline-shell,.quiz-box,.command-card,.ref-card,.insight,.ai-panel{border:1px solid var(--ok-line);background:linear-gradient(165deg,color-mix(in oklch,var(--ok-cyan) 3%,var(--ok-bg-1)),var(--ok-bg-1) 56%);border-radius:var(--r2)}.hero-console{overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.3)}.console-top{height:38px;border-bottom:1px solid var(--ok-line);display:flex;align-items:center;gap:8px;padding:0 13px;background:var(--ok-bg-2);font-family:var(--ok-mono);font-size:10px;color:var(--ok-fg-mute);letter-spacing:.12em;text-transform:uppercase}.console-top span{width:9px;height:9px;border:1px solid currentColor;border-radius:50%}.console-top span:nth-child(1){color:var(--ok-orange)}.console-top span:nth-child(2){color:var(--ok-magenta)}.console-top span:nth-child(3){color:var(--ok-cyan)}.console-top strong{margin-left:auto;color:var(--ok-fg-soft)}pre{margin:0;white-space:pre-wrap;overflow:auto}code{font-family:var(--ok-mono);font-size:12px;line-height:1.6}.hero-console pre{padding:24px;color:var(--ok-cyan)}
+.btn,.icon-btn,.chip,.tab{border:1px solid var(--ok-line);background:transparent;color:var(--ok-fg);font-family:var(--ok-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:var(--ok-r-1);transition:.16s}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px}.btn.sm{padding:8px 12px;font-size:10px}.btn.solid{border-color:var(--ok-accent);background:var(--ok-accent);color:var(--ok-bg-0);font-weight:700}.btn.cyan{border-color:var(--ok-cyan);color:var(--ok-cyan)}.btn.ghost{color:var(--ok-fg-soft)}.btn:hover,.chip:hover,.tab:hover,.icon-btn:hover{border-color:var(--ok-cyan);box-shadow:0 0 var(--ok-glow-px) -8px var(--ok-cyan);color:var(--ok-fg)}.icon-btn{width:38px;height:38px;display:grid;place-items:center}.chip,.tab{padding:9px 12px}.chip.active,.tab.active{background:var(--ok-cyan);border-color:var(--ok-cyan);color:var(--ok-bg-0);font-weight:700}
+.hero-console,.diff-panel,.chart-card,.practice-card,.code-case,.lab-shell,.agent-lab,.review-shell,.pipeline-shell,.quiz-box,.command-card,.ref-card,.insight,.ai-panel{border:1px solid var(--ok-line);background:linear-gradient(165deg,color-mix(in oklch,var(--ok-cyan) 3%,var(--ok-bg-1)),var(--ok-bg-1) 56%);border-radius:var(--ok-r-2)}.hero-console{overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.3)}.console-top{height:38px;border-bottom:1px solid var(--ok-line);display:flex;align-items:center;gap:8px;padding:0 13px;background:var(--ok-bg-2);font-family:var(--ok-mono);font-size:10px;color:var(--ok-fg-mute);letter-spacing:.12em;text-transform:uppercase}.console-top span{width:9px;height:9px;border:1px solid currentColor;border-radius:50%}.console-top span:nth-child(1){color:var(--ok-orange)}.console-top span:nth-child(2){color:var(--ok-magenta)}.console-top span:nth-child(3){color:var(--ok-cyan)}.console-top strong{margin-left:auto;color:var(--ok-fg-soft)}pre{margin:0;white-space:pre-wrap;overflow:auto}code{font-family:var(--ok-mono);font-size:12px;line-height:1.6}.hero-console pre{padding:24px;color:var(--ok-cyan)}
 .metric-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;margin-top:48px;border:1px solid var(--ok-line);background:var(--ok-line)}.metric{background:var(--ok-bg-1);padding:18px}.metric strong{display:block;font-size:clamp(26px,3vw,42px);line-height:1;color:var(--ok-accent);font-family:var(--ok-mono)}.metric span{display:block;color:var(--ok-fg-soft);font-size:13px;margin:10px 0}.metric small{color:var(--ok-fg-mute);font-family:var(--ok-mono);font-size:10px}.source-rail{display:flex;gap:8px;overflow:auto;padding:14px 0 0}.source-rail a{flex:0 0 auto;border:1px solid var(--ok-line);padding:6px 10px;color:var(--ok-fg-soft);font-family:var(--ok-mono);font-size:10px;background:var(--ok-bg-1)}.source-rail a:hover{color:var(--ok-cyan);border-color:var(--ok-cyan)}
-.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;margin-bottom:42px}.section-head>div{max-width:760px}.section-head>p{max-width:420px;color:var(--ok-fg-soft);margin:8px 0 0;font-size:15px}.insight-grid,.ai-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px}.insight,.ai-panel{padding:24px}.insight span{font-family:var(--ok-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-accent)}.insight.cyan span{color:var(--ok-cyan)}.insight.magenta span{color:var(--ok-magenta)}.insight h3,.ai-panel h3{font-size:22px;margin:10px 0}.insight p,.ai-panel li,.ai-panel p{color:var(--ok-fg-soft);font-size:14px;line-height:1.6}.charts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.chart-card{padding:22px;min-height:430px}.chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.chart-head h3{margin:0 0 16px;font-size:22px}.chart-card canvas{width:100%;height:260px;border:1px solid var(--ok-line-soft);background:var(--ok-bg-0);border-radius:var(--r1)}.takeaway{border-left:3px solid var(--ok-magenta);background:color-mix(in oklch,var(--ok-magenta) 7%,var(--ok-bg-0));padding:10px 12px;color:var(--ok-fg-soft);font-size:13px;margin:14px 0 0}
-.sdlc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.sdlc-cell{text-align:left;border:1px solid var(--ok-line);background:var(--ok-bg-1);color:var(--ok-fg);padding:18px;border-radius:var(--r2);min-height:300px}.sdlc-cell:hover{border-color:var(--ok-cyan);background:var(--ok-bg-2)}.cell-id{font-family:var(--ok-mono);font-size:10px;color:var(--ok-cyan);text-transform:uppercase}.sdlc-cell h3{margin:10px 0}.sdlc-cell dl{margin:0;display:grid;gap:6px}.sdlc-cell dt{font-family:var(--ok-mono);font-size:10px;color:var(--ok-accent);text-transform:uppercase}.sdlc-cell dd{margin:0;color:var(--ok-fg-soft);font-size:13px}.sdlc-cell small{display:block;margin-top:12px;color:var(--ok-fg-mute);font-family:var(--ok-mono);font-size:10px}.filter-state{margin:16px 0 0;border:1px solid var(--ok-cyan);padding:12px 14px;color:var(--ok-cyan);font-family:var(--ok-mono);font-size:12px}
-.practice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.practice-card{display:grid;grid-template-columns:72px 1fr;min-height:220px;overflow:hidden}.card-num{display:grid;place-items:center;border-right:1px solid var(--ok-line);font-family:var(--ok-mono);font-size:28px;color:var(--ok-accent);background:var(--ok-bg-0)}.card-body{padding:22px}.tag-row{display:flex;flex-wrap:wrap;gap:6px}.badge{display:inline-flex;align-items:center;border:1px solid var(--ok-line);background:var(--ok-bg-0);color:var(--ok-fg-soft);font-family:var(--ok-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:var(--r1)}.badge.danger{color:var(--ok-danger);border-color:color-mix(in oklch,var(--ok-danger) 40%,var(--ok-line))}.practice-card h3{font-size:22px;margin:14px 0 8px}.practice-card p{color:var(--ok-fg-soft);font-size:14px;line-height:1.55}
+.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;margin-bottom:42px}.section-head>div{max-width:760px}.section-head>p{max-width:420px;color:var(--ok-fg-soft);margin:8px 0 0;font-size:15px}.insight-grid,.ai-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px}.insight,.ai-panel{padding:24px}.insight span{font-family:var(--ok-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok-accent)}.insight.cyan span{color:var(--ok-cyan)}.insight.magenta span{color:var(--ok-magenta)}.insight h3,.ai-panel h3{font-size:22px;margin:10px 0}.insight p,.ai-panel li,.ai-panel p{color:var(--ok-fg-soft);font-size:14px;line-height:1.6}.charts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.chart-card{padding:22px;min-height:430px}.chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.chart-head h3{margin:0 0 16px;font-size:22px}.chart-card canvas{width:100%;height:260px;border:1px solid var(--ok-line-soft);background:var(--ok-bg-0);border-radius:var(--ok-r-1)}.takeaway{border-left:3px solid var(--ok-magenta);background:color-mix(in oklch,var(--ok-magenta) 7%,var(--ok-bg-0));padding:10px 12px;color:var(--ok-fg-soft);font-size:13px;margin:14px 0 0}
+.sdlc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.sdlc-cell{text-align:left;border:1px solid var(--ok-line);background:var(--ok-bg-1);color:var(--ok-fg);padding:18px;border-radius:var(--ok-r-2);min-height:300px}.sdlc-cell:hover{border-color:var(--ok-cyan);background:var(--ok-bg-2)}.cell-id{font-family:var(--ok-mono);font-size:10px;color:var(--ok-cyan);text-transform:uppercase}.sdlc-cell h3{margin:10px 0}.sdlc-cell dl{margin:0;display:grid;gap:6px}.sdlc-cell dt{font-family:var(--ok-mono);font-size:10px;color:var(--ok-accent);text-transform:uppercase}.sdlc-cell dd{margin:0;color:var(--ok-fg-soft);font-size:13px}.sdlc-cell small{display:block;margin-top:12px;color:var(--ok-fg-mute);font-family:var(--ok-mono);font-size:10px}.filter-state{margin:16px 0 0;border:1px solid var(--ok-cyan);padding:12px 14px;color:var(--ok-cyan);font-family:var(--ok-mono);font-size:12px}
+.practice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.practice-card{display:grid;grid-template-columns:72px 1fr;min-height:220px;overflow:hidden}.card-num{display:grid;place-items:center;border-right:1px solid var(--ok-line);font-family:var(--ok-mono);font-size:28px;color:var(--ok-accent);background:var(--ok-bg-0)}.card-body{padding:22px}.tag-row{display:flex;flex-wrap:wrap;gap:6px}.badge{display:inline-flex;align-items:center;border:1px solid var(--ok-line);background:var(--ok-bg-0);color:var(--ok-fg-soft);font-family:var(--ok-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:var(--ok-r-1)}.badge.danger{color:var(--ok-danger);border-color:color-mix(in oklch,var(--ok-danger) 40%,var(--ok-line))}.practice-card h3{font-size:22px;margin:14px 0 8px}.practice-card p{color:var(--ok-fg-soft);font-size:14px;line-height:1.55}
 .code-vault{display:flex;flex-direction:column;gap:18px}.code-case{display:none;padding:0;overflow:hidden}.code-case.active{display:block}.code-case-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:20px 22px;border-bottom:1px solid var(--ok-line)}.code-case-head h3{margin:0}.code-columns{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ok-line)}.code-columns>div{background:var(--ok-bg-0);min-width:0}.code-label{display:block;font-family:var(--ok-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;border-bottom:1px solid var(--ok-line)}.code-label.bad{color:var(--ok-danger)}.code-label.good{color:var(--ok-success)}.code-columns pre{padding:16px;max-height:420px}.explain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:18px 22px}.explain-grid p{margin:0;color:var(--ok-fg-soft);font-size:13px;line-height:1.55}
-.lab-shell{padding:20px}.supply-shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px}.package-list{display:flex;flex-direction:column;gap:8px}.package-btn{border:1px solid var(--ok-line);background:var(--ok-bg-0);color:var(--ok-fg-soft);padding:12px;text-align:left;border-radius:var(--r1);font-family:var(--ok-mono);font-size:12px}.package-btn span{display:block;color:var(--ok-cyan);font-size:10px;text-transform:uppercase}.package-btn.active{border-color:var(--ok-accent);color:var(--ok-fg);background:var(--ok-bg-2)}.package-score{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.score-box{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:12px}.score-box strong{display:block;font-family:var(--ok-mono);font-size:24px;color:var(--ok-accent)}.score-box span{font-family:var(--ok-mono);font-size:10px;color:var(--ok-fg-mute);text-transform:uppercase}.decision-banner{border:1px solid var(--ok-cyan);background:color-mix(in oklch,var(--ok-cyan) 8%,var(--ok-bg-0));padding:14px;margin-top:14px;font-family:var(--ok-mono);color:var(--ok-cyan)}
+.lab-shell{padding:20px}.supply-shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px}.package-list{display:flex;flex-direction:column;gap:8px}.package-btn{border:1px solid var(--ok-line);background:var(--ok-bg-0);color:var(--ok-fg-soft);padding:12px;text-align:left;border-radius:var(--ok-r-1);font-family:var(--ok-mono);font-size:12px}.package-btn span{display:block;color:var(--ok-cyan);font-size:10px;text-transform:uppercase}.package-btn.active{border-color:var(--ok-accent);color:var(--ok-fg);background:var(--ok-bg-2)}.package-score{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.score-box{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:12px}.score-box strong{display:block;font-family:var(--ok-mono);font-size:24px;color:var(--ok-accent)}.score-box span{font-family:var(--ok-mono);font-size:10px;color:var(--ok-fg-mute);text-transform:uppercase}.decision-banner{border:1px solid var(--ok-cyan);background:color-mix(in oklch,var(--ok-cyan) 8%,var(--ok-bg-0));padding:14px;margin-top:14px;font-family:var(--ok-mono);color:var(--ok-cyan)}
 .ai-panel ul{margin:0;padding-left:18px}.ai-panel.risk{border-color:color-mix(in oklch,var(--ok-magenta) 36%,var(--ok-line))}.ai-panel.good{border-color:color-mix(in oklch,var(--ok-success) 36%,var(--ok-line))}.agent-lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,360px) minmax(220px,300px);gap:22px;align-items:start;padding:22px;margin-top:20px}.toggle-line,.gate-toggle{display:flex;align-items:center;gap:10px;font-family:var(--ok-mono);font-size:12px;color:var(--ok-fg-soft);padding:8px 0}.toggle-line input,.gate-toggle input{display:none}.toggle-line span,.gate-toggle span{width:34px;height:18px;border:1px solid var(--ok-line);background:var(--ok-bg-0);position:relative;flex:0 0 auto}.toggle-line span:after,.gate-toggle span:after{content:"";position:absolute;top:3px;left:3px;width:10px;height:10px;background:var(--ok-fg-mute);transition:.15s}.toggle-line input:checked+span,.gate-toggle input:checked+span{border-color:var(--ok-cyan)}.toggle-line input:checked+span:after,.gate-toggle input:checked+span:after{left:18px;background:var(--ok-cyan)}.risk-meter{border:1px solid var(--ok-line);padding:18px;background:var(--ok-bg-0)}.risk-meter strong{font-family:var(--ok-mono);font-size:48px;color:var(--ok-accent);display:block}.risk-meter span{display:block;font-family:var(--ok-mono);font-size:11px;text-transform:uppercase;color:var(--ok-fg-mute)}.risk-meter p{color:var(--ok-fg-soft);font-size:13px}
 .review-shell{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:20px;padding:20px}.diff-panel{overflow:hidden}.diff-line{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--ok-line-soft);background:var(--ok-bg-0);color:var(--ok-fg-soft);padding:12px 14px}.diff-line:hover,.diff-line.marked{background:color-mix(in oklch,var(--ok-magenta) 10%,var(--ok-bg-0));color:var(--ok-fg)}.finding-panel{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:16px}.finding{border-left:3px solid var(--ok-magenta);padding:10px 12px;margin:10px 0;background:var(--ok-bg-1)}.finding strong{display:block}.finding small{font-family:var(--ok-mono);color:var(--ok-accent)}
 .pipeline-shell{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;padding:20px}.gate-list{border:1px solid var(--ok-line);padding:14px;background:var(--ok-bg-0)}.pipeline-viz{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:22px}.pipeline-track{display:grid;grid-template-columns:auto 1fr auto 1fr auto 1fr auto;gap:12px;align-items:center;font-family:var(--ok-mono);font-size:11px;text-transform:uppercase;color:var(--ok-fg-soft)}.pipeline-track i{height:2px;background:linear-gradient(90deg,var(--ok-accent),var(--ok-cyan))}.pipeline-score{display:flex;align-items:baseline;gap:16px;margin:28px 0}.pipeline-score strong{font-size:64px;font-family:var(--ok-mono);color:var(--ok-accent)}.pipeline-score span{font-family:var(--ok-mono);text-transform:uppercase;color:var(--ok-fg-soft)}.risk-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.risk-item{border:1px solid var(--ok-line);padding:12px;background:var(--ok-bg-1);font-size:13px;color:var(--ok-fg-soft)}.risk-item.caught{border-color:color-mix(in oklch,var(--ok-success) 38%,var(--ok-line));opacity:.62}.risk-item.leak{border-color:color-mix(in oklch,var(--ok-danger) 40%,var(--ok-line))}
 .command-grid,.reference-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.command-card,.ref-card{padding:18px}.command-card pre{border:1px solid var(--ok-line-soft);padding:12px;background:var(--ok-bg-0);margin-bottom:12px}.command-card p,.ref-card p{font-size:13px;color:var(--ok-fg-soft);line-height:1.55}.ref-meta{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.ref-meta>span{font-family:var(--ok-mono);font-size:10px;color:var(--ok-cyan);text-transform:uppercase;letter-spacing:.12em}.ref-card h3{font-size:18px;margin:12px 0}.ref-card a{font-family:var(--ok-mono);font-size:11px;color:var(--ok-accent);text-transform:uppercase;letter-spacing:.08em}
 .quiz-box{padding:22px}.quiz-question{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:18px;margin-bottom:14px}.quiz-question h3{margin-top:0}.quiz-option{display:block;width:100%;text-align:left;margin:8px 0;border:1px solid var(--ok-line);background:var(--ok-bg-1);color:var(--ok-fg-soft);padding:12px}.quiz-option.correct{border-color:var(--ok-success);color:var(--ok-success)}.quiz-option.wrong{border-color:var(--ok-danger);color:var(--ok-danger)}.quiz-feedback{font-size:13px;color:var(--ok-fg-soft);border-left:3px solid var(--ok-cyan);padding:8px 12px;background:color-mix(in oklch,var(--ok-cyan) 6%,var(--ok-bg-1))}
-.modal{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.2s}.modal.open{opacity:1;visibility:visible}.modal-backdrop{position:absolute;inset:0;background:color-mix(in oklch,var(--ok-bg-0) 55%,transparent);backdrop-filter:blur(8px)}.modal-dialog{position:relative;width:min(1080px,100%);height:min(90vh,900px);background:var(--ok-bg-1);border:1px solid var(--ok-line);border-radius:var(--r2);box-shadow:0 24px 80px rgba(0,0,0,.48);display:flex;flex-direction:column;overflow:hidden}.modal-toolbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ok-line);background:var(--ok-bg-2)}.modal-toolbar span{font-family:var(--ok-mono);font-size:12px;color:var(--ok-cyan);letter-spacing:.12em;text-transform:uppercase;margin-right:auto}.modal-body{overflow:auto;padding:22px}.modal-title{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start}.modal-title .big-num{font-family:var(--ok-mono);font-size:42px;color:var(--ok-accent);line-height:1}.modal-body h2{font-size:32px;margin:0 0 8px}.modal-section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}.modal-box{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:16px}.modal-box h3{margin-top:0}.modal-box ul{padding-left:18px}.modal-box li,.modal-box p{color:var(--ok-fg-soft);font-size:14px;line-height:1.6}.modal-refs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.modal-refs a{border:1px solid var(--ok-line);padding:7px 10px;font-family:var(--ok-mono);font-size:10px;color:var(--ok-cyan);text-transform:uppercase}
+.modal{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.2s}.modal.open{opacity:1;visibility:visible}.modal-backdrop{position:absolute;inset:0;background:color-mix(in oklch,var(--ok-bg-0) 55%,transparent);backdrop-filter:blur(8px)}.modal-dialog{position:relative;width:min(1080px,100%);height:min(90vh,900px);background:var(--ok-bg-1);border:1px solid var(--ok-line);border-radius:var(--ok-r-2);box-shadow:0 24px 80px rgba(0,0,0,.48);display:flex;flex-direction:column;overflow:hidden}.modal-toolbar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ok-line);background:var(--ok-bg-2)}.modal-toolbar span{font-family:var(--ok-mono);font-size:12px;color:var(--ok-cyan);letter-spacing:.12em;text-transform:uppercase;margin-right:auto}.modal-body{overflow:auto;padding:22px}.modal-title{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start}.modal-title .big-num{font-family:var(--ok-mono);font-size:42px;color:var(--ok-accent);line-height:1}.modal-body h2{font-size:32px;margin:0 0 8px}.modal-section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}.modal-box{border:1px solid var(--ok-line);background:var(--ok-bg-0);padding:16px}.modal-box h3{margin-top:0}.modal-box ul{padding-left:18px}.modal-box li,.modal-box p{color:var(--ok-fg-soft);font-size:14px;line-height:1.6}.modal-refs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.modal-refs a{border:1px solid var(--ok-line);padding:7px 10px;font-family:var(--ok-mono);font-size:10px;color:var(--ok-cyan);text-transform:uppercase}
 .toast{position:fixed;right:18px;bottom:18px;z-index:600;border:1px solid var(--ok-cyan);background:var(--ok-bg-0);color:var(--ok-cyan);font-family:var(--ok-mono);font-size:12px;padding:12px 14px;opacity:0;transform:translateY(8px);transition:.18s}.toast.show{opacity:1;transform:translateY(0)}.hidden-by-search,.hidden-by-tag,.hidden-by-ref{display:none!important}.present-mode .toolbar,.present-mode .sidebar{display:none!important}.present-mode .layout{display:block;padding-top:0}
 @media(max-width:1180px){.metric-strip{grid-template-columns:repeat(3,1fr)}.sdlc-grid{grid-template-columns:repeat(2,1fr)}.charts-grid{grid-template-columns:1fr}.hero-grid,.agent-lab{grid-template-columns:1fr}.command-grid,.reference-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:840px){.layout{grid-template-columns:1fr;padding-top:112px}.sidebar{display:none}.toolbar{gap:8px}.brand{font-size:10px}.search{order:3;width:100%;max-width:none;flex-basis:100%}.lesson-sec{padding-left:18px;padding-right:18px}.hero-grid,.section-head,.review-shell,.pipeline-shell,.supply-shell{grid-template-columns:1fr}.section-head{display:block}.metric-strip,.practice-grid,.code-columns,.explain-grid,.insight-grid,.ai-grid,.command-grid,.reference-grid,.risk-list{grid-template-columns:1fr}.practice-card{grid-template-columns:54px 1fr}.card-num{font-size:20px}.package-score{grid-template-columns:repeat(2,1fr)}}@media print{body.ok{background:#fff;color:#111}.no-print,.toolbar,.sidebar,.modal,.toast{display:none!important}.layout{display:block;padding-top:0}.lesson-sec{page-break-inside:avoid;padding:24px 0;border-bottom:1px solid #ddd}.chart-card,.practice-card,.code-case,.insight,.ref-card,.command-card{break-inside:avoid;background:#fff;color:#111;border-color:#ddd}.code-case{display:block!important}pre,code{white-space:pre-wrap}.charts-grid,.practice-grid,.command-grid,.reference-grid{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr}a{color:#111;text-decoration:underline}}
+
+/* OWASP-CWE shell alignment */
+.main{padding:clamp(24px,3vw,48px) clamp(20px,4vw,64px) var(--ok-s-12);max-width:none;width:100%}
+.main .lesson-sec{padding:clamp(40px,5vw,72px) 0;border-bottom:1px solid var(--ok-line-soft);scroll-margin-top:68px}
+.hero{padding:var(--ok-s-8) 0 var(--ok-s-9);border-bottom:1px solid var(--ok-line)}
+.hero h1{font-size:clamp(36px,4.5vw,64px);font-weight:500;letter-spacing:-.035em;line-height:1.05;margin:16px 0;max-width:820px}
+.lede,.lead{color:var(--ok-fg-soft);font-size:clamp(17px,1.4vw,20px);line-height:1.65;max-width:820px}
+.ok-input{width:100%;background:var(--ok-bg-0);border:1px solid var(--ok-line);color:var(--ok-fg);font-family:var(--ok-mono);font-size:14px;padding:12px 14px;border-radius:var(--ok-r-1);outline:none;transition:all var(--ok-fast,.15s)}
+.ok-input:focus{border-color:var(--ok-cyan);box-shadow:0 0 0 1px var(--ok-cyan),0 0 calc(18px * var(--ok-glow)) -6px var(--ok-cyan)}
+.toolbar .ok-input{min-width:200px;flex:1;max-width:360px}
+.ok-btn{--c:var(--ok-accent);font-family:var(--ok-mono);font-size:12px;letter-spacing:.08em;font-weight:500;padding:12px 22px;border:1px solid var(--c);background:transparent;color:var(--ok-fg);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;position:relative;white-space:nowrap;transition:all .15s;border-radius:var(--ok-r-0)}
+.ok-btn:hover{background:var(--c);color:var(--ok-bg-0);font-weight:600;box-shadow:0 0 var(--ok-glow-px) -4px color-mix(in oklch,var(--c) 80%,transparent)}
+.ok-btn.solid,.ok-btn.btn.solid{background:var(--c);color:var(--ok-bg-0);font-weight:600}
+.ok-btn.cyan,.ok-btn.btn.cyan{--c:var(--ok-cyan);border-color:var(--ok-cyan);color:var(--ok-cyan)}
+.ok-btn.ghost,.ok-btn.btn.ghost{border-color:var(--ok-line);color:var(--ok-fg-soft)}
+.ok-btn.sm{padding:8px 14px;font-size:11px}
+.ok-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--ok-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--ok-line);background:var(--ok-bg-1);color:var(--ok-fg-soft);border-radius:var(--ok-r-1)}
+.ok-sec-hd{display:flex;align-items:baseline;justify-content:space-between;gap:40px;margin-bottom:var(--ok-s-9);position:relative}
+.ok-sec-hd h2{font-family:var(--ok-display);font-weight:500;font-size:clamp(32px,4vw,56px);letter-spacing:-.03em;line-height:1.05;margin:18px 0 0}
+.ok-sec-hd::after{content:"";position:absolute;left:0;bottom:-16px;height:1px;width:80px;background:linear-gradient(90deg,var(--ok-accent),color-mix(in oklch,var(--ok-magenta) 60%,transparent),transparent);opacity:.7}
+.nav-group{padding:10px 8px 6px;border-bottom:1px solid var(--ok-line-soft)}
+.nav-group-hd{display:flex;align-items:center;gap:8px;font-family:var(--ok-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ok-fg-mute);margin:0 0 8px 6px;font-weight:600}
+.nav-group-dot{width:6px;height:6px;border-radius:50%;background:var(--ok-line);flex-shrink:0}
+.nav-tone-cyan .nav-group-dot,.nav-group-hd.nav-tone-cyan .nav-group-dot{background:var(--ok-cyan);box-shadow:0 0 8px color-mix(in oklch,var(--ok-cyan) 50%,transparent)}
+.nav-tone-accent .nav-group-dot,.nav-group-hd.nav-tone-accent .nav-group-dot{background:var(--ok-accent);box-shadow:0 0 8px color-mix(in oklch,var(--ok-accent) 50%,transparent)}
+.nav-tone-magenta .nav-group-dot,.nav-group-hd.nav-tone-magenta .nav-group-dot{background:var(--ok-magenta);box-shadow:0 0 8px color-mix(in oklch,var(--ok-magenta) 50%,transparent)}
+.nav-tone-success .nav-group-dot,.nav-group-hd.nav-tone-success .nav-group-dot{background:var(--ok-success);box-shadow:0 0 8px color-mix(in oklch,var(--ok-success) 50%,transparent)}
+.nav-group-body{display:flex;flex-direction:column;gap:2px}
+.nav-link{display:flex;align-items:flex-start;gap:8px;padding:7px 10px 7px 8px;font-family:var(--ok-mono);font-size:10px;color:var(--ok-fg-soft);border-radius:var(--ok-r-1);border:1px solid transparent;line-height:1.35;text-decoration:none;transition:background .15s,border-color .15s,color .15s,transform .12s}
+.nav-link:hover{transform:translateX(2px)}
+.nav-badge{flex-shrink:0;min-width:34px;padding:2px 6px;border-radius:var(--ok-r-1);font-size:9px;font-weight:600;text-align:center;line-height:1.3;background:var(--ok-bg-3);border:1px solid var(--ok-line);color:var(--ok-fg-mute)}
+.nav-label{flex:1;min-width:0;word-break:break-word}
+.nav-link.nav-tone-cyan:hover,.nav-link.nav-tone-cyan.active{background:color-mix(in oklch,var(--ok-cyan) 10%,transparent);border-color:color-mix(in oklch,var(--ok-cyan) 25%,var(--ok-line));color:var(--ok-fg)}
+.nav-link.nav-tone-accent:hover,.nav-link.nav-tone-accent.active,.nav-link.nav-hub:hover{background:color-mix(in oklch,var(--ok-accent) 10%,transparent);border-color:color-mix(in oklch,var(--ok-accent) 28%,var(--ok-line));color:var(--ok-fg)}
+.nav-link.nav-tone-magenta:hover,.nav-link.nav-tone-hot:hover,.nav-link.nav-tone-magenta.active,.nav-link.nav-tone-hot.active{background:color-mix(in oklch,var(--ok-magenta) 10%,transparent);border-color:color-mix(in oklch,var(--ok-magenta) 28%,var(--ok-line));color:var(--ok-fg)}
+.nav-link.nav-tone-success:hover,.nav-link.nav-tone-success.active{background:color-mix(in oklch,var(--ok-success) 10%,transparent);border-color:color-mix(in oklch,var(--ok-success) 28%,var(--ok-line));color:var(--ok-fg)}
+.nav-link.nav-tone-base:hover,.nav-link.nav-tone-base.active{background:color-mix(in oklch,var(--ok-bg-3) 80%,transparent);border-color:var(--ok-line);color:var(--ok-fg)}
+.nav-tone-cyan .nav-badge{border-color:color-mix(in oklch,var(--ok-cyan) 30%,var(--ok-line));color:var(--ok-cyan)}
+.nav-tone-accent .nav-badge,.nav-hub .nav-badge{border-color:color-mix(in oklch,var(--ok-accent) 30%,var(--ok-line));color:var(--ok-accent)}
+.nav-tone-magenta .nav-badge,.nav-tone-hot .nav-badge{border-color:color-mix(in oklch,var(--ok-magenta) 30%,var(--ok-line));color:var(--ok-magenta)}
+.nav-tone-success .nav-badge{border-color:color-mix(in oklch,var(--ok-success) 30%,var(--ok-line));color:var(--ok-success)}
+.owasp-bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--ok-s-5)}
+@media(min-width:1200px){.owasp-bento{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.owasp-card{display:flex;flex-direction:column;text-align:left;padding:var(--ok-s-5);border:1px solid var(--ok-line);background:var(--ok-bg-1);border-radius:var(--ok-r-2);transition:border-color .2s,transform .15s,box-shadow .2s;min-height:220px;position:relative;overflow:hidden}
+.owasp-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,color-mix(in oklch,var(--ok-cyan) 6%,transparent),transparent 55%);opacity:0;transition:opacity .2s;pointer-events:none}
+.owasp-card:hover,.owasp-card:focus-within{border-color:var(--ok-cyan);transform:translateY(-3px);box-shadow:0 8px 28px color-mix(in oklch,var(--ok-cyan) 12%,transparent);outline:none}
+.owasp-card:hover::before,.owasp-card.filter-match::before{opacity:1}
+.practice-card.owasp-card{display:flex;min-height:248px;padding:0}
+.practice-card .card-num{display:block;padding:20px 20px 0;border-right:0;background:transparent;font-size:22px;line-height:1;color:var(--ok-accent)}
+.practice-card .card-body{padding:14px 20px 20px;display:flex;flex-direction:column;flex:1;position:relative;z-index:1}
+.practice-card h3{font-size:15px;font-weight:600;margin:12px 0 8px;line-height:1.3;color:var(--ok-fg)}
+.practice-card p{font-size:13px;line-height:1.5;flex:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hub-card-actions{display:flex;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid var(--ok-line-soft)}
+.hub-card-actions .hub-btn-info,.hub-card-actions .hub-btn-sim{flex:1;justify-content:center;font-weight:600;letter-spacing:.02em}
+.chart-box{border:1px solid var(--ok-line);padding:clamp(18px,2.5vw,28px);background:linear-gradient(165deg,color-mix(in oklch,var(--ok-cyan) 4%,var(--ok-bg-1)) 0%,var(--ok-bg-1) 55%);border-radius:var(--ok-r-2);transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:0}
+.chart-box:hover{border-color:color-mix(in oklch,var(--ok-cyan) 45%,var(--ok-line));box-shadow:0 8px 32px rgba(0,0,0,.22)}
+.chart-card canvas{border:1px solid var(--ok-line-soft);border-radius:var(--ok-r-2);background:var(--ok-bg-0)}
+.owasp-modal{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.owasp-modal.open{opacity:1;visibility:visible}
+.owasp-modal-backdrop{position:absolute;inset:0;background:color-mix(in oklch,var(--ok-bg-0) 55%,transparent);backdrop-filter:blur(8px)}
+.owasp-modal-dialog{position:relative;width:min(1040px,100%);height:min(90vh,920px);max-height:min(90vh,920px);background:var(--ok-bg-1);border:1px solid var(--ok-line);border-radius:var(--ok-r-2);box-shadow:0 24px 80px color-mix(in oklch,#000 45%,transparent);display:flex;flex-direction:column;overflow:hidden;transform:translateY(16px) scale(.98);transition:transform .25s}
+.owasp-modal.open .owasp-modal-dialog{transform:translateY(0) scale(1)}
+.owasp-modal-toolbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--ok-line);background:var(--ok-bg-2);flex-shrink:0}
+.owasp-modal-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:16px 24px 24px}
+.owasp-modal:not(.open) .owasp-modal-dialog{display:none}
+.source-rail a,.modal-refs a,.ref-card a{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:840px){.toolbar .ok-input.search{order:3;flex:0 0 100%;width:100%;max-width:none;min-width:0}.layout{padding-top:112px}.main{padding-left:18px;padding-right:18px}.main,.layout,.lesson-sec,.sdlc-grid,.sdlc-cell{min-width:0}.main .lesson-sec{padding-left:0;padding-right:0}.sdlc-grid{grid-template-columns:1fr}.owasp-bento{grid-template-columns:1fr}.ok-sec-hd{display:block}.hub-card-actions{flex-direction:column}.ok-btn{white-space:normal;text-align:center;justify-content:center}}
+
 </style>
 </head>
 <body class="ok">
 <div class="toolbar no-print">
   <button class="icon-btn" id="sidebar-toggle" title="Alternar menu" aria-label="Alternar menu">☰</button>
   <a class="brand" href="#intro">// SEC-COD-PRAT</a>
-  <input id="global-search" class="search" type="search" placeholder="Buscar prática, gate, fonte, linguagem...">
+  <input id="global-search" class="ok-input search" type="search" placeholder="Buscar prática, gate, fonte, linguagem...">
   <button class="icon-btn" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">◐</button>
   <button class="icon-btn" id="present-toggle" title="Modo apresentação" aria-label="Modo apresentação">⛶</button>
-  <button class="btn sm cyan" id="print-btn">Exportar PDF</button>
+  <button class="ok-btn btn sm cyan" id="print-btn">Exportar PDF</button>
 </div>
 <div class="layout">
   <aside class="sidebar no-print">
@@ -54,10 +122,41 @@ main{min-width:0}.lesson-sec{padding:clamp(52px,7vw,96px) clamp(18px,5vw,72px);b
       <small>Fundamentos + IA assistida</small>
     </div>
     <nav>
-      <a href="#intro">Entrada</a><a href="#contexto">Dados e pesquisa</a><a href="#sdlc">SDLC seguro + IA</a><a href="#hub">Práticas fundamentais</a><a href="#codigo">Cofre de código</a><a href="#supply-chain">Supply chain lab</a><a href="#ia-dev">IA no desenvolvimento</a><a href="#pr-review">PR review simulator</a><a href="#pipeline">Pipeline gate simulator</a><a href="#lab-externo">Lab externo opcional</a><a href="#quiz">Quiz de verificação</a><a href="#referencias">Referências</a>
+      <div class="nav-group">
+        <div class="nav-group-hd nav-tone-cyan"><span class="nav-group-dot"></span><span>Mapa</span></div>
+        <div class="nav-group-body">
+          <a class="nav-link nav-tone-cyan active" href="#intro"><span class="nav-badge">00</span><span class="nav-label">Entrada</span></a>
+          <a class="nav-link nav-tone-cyan" href="#contexto"><span class="nav-badge">01</span><span class="nav-label">Dados e pesquisa</span></a>
+          <a class="nav-link nav-tone-accent" href="#sdlc"><span class="nav-badge">02</span><span class="nav-label">SDLC seguro + IA</span></a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-hd nav-tone-accent"><span class="nav-group-dot"></span><span>Práticas</span></div>
+        <div class="nav-group-body">
+          <a class="nav-link nav-tone-accent nav-hub" href="#hub"><span class="nav-badge">10</span><span class="nav-label">Práticas fundamentais</span></a>
+          <a class="nav-link nav-tone-cyan" href="#codigo"><span class="nav-badge">CODE</span><span class="nav-label">Cofre de código</span></a>
+          <a class="nav-link nav-tone-magenta" href="#supply-chain"><span class="nav-badge">SCA</span><span class="nav-label">Supply chain lab</span></a>
+          <a class="nav-link nav-tone-magenta" href="#ia-dev"><span class="nav-badge">AI</span><span class="nav-label">IA no desenvolvimento</span></a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-hd nav-tone-magenta"><span class="nav-group-dot"></span><span>Simuladores</span></div>
+        <div class="nav-group-body">
+          <a class="nav-link nav-tone-hot" href="#pr-review"><span class="nav-badge">PR</span><span class="nav-label">PR review simulator</span></a>
+          <a class="nav-link nav-tone-success" href="#pipeline"><span class="nav-badge">CI</span><span class="nav-label">Pipeline gate simulator</span></a>
+          <a class="nav-link nav-tone-base" href="#lab-externo"><span class="nav-badge">CLI</span><span class="nav-label">Lab externo opcional</span></a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-hd nav-tone-success"><span class="nav-group-dot"></span><span>Fechamento</span></div>
+        <div class="nav-group-body">
+          <a class="nav-link nav-tone-success" href="#quiz"><span class="nav-badge">QZ</span><span class="nav-label">Quiz de verificação</span></a>
+          <a class="nav-link nav-tone-cyan" href="#referencias"><span class="nav-badge">REF</span><span class="nav-label">Referências</span></a>
+        </div>
+      </div>
     </nav>
   </aside>
-  <main>
+  <main class="main">
     <section id="intro" class="lesson-sec hero searchable" data-tags="intro ia fundamentos sdlc">
     <div class="hero-grid">
       <div class="hero-copy">
@@ -65,9 +164,9 @@ main{min-width:0}.lesson-sec{padding:clamp(52px,7vw,96px) clamp(18px,5vw,72px);b
         <h1>Secure Coding Practices <em>para SDLC com IA assistida</em></h1>
         <p class="lead">IA já faz parte do desenvolvimento. O problema não é usar IA para codar; o problema é usar IA sem threat model, revisão, testes, rastreabilidade, sandbox, permissões e gates de segurança.</p>
         <div class="hero-actions no-print">
-          <a class="btn solid" href="#hub">Explorar práticas</a>
-          <a class="btn cyan" href="#pipeline">Simular gates</a>
-          <a class="btn ghost" href="#referencias">Ver referências</a>
+          <a class="ok-btn btn solid" href="#hub">Explorar práticas</a>
+          <a class="ok-btn btn cyan hub-btn-sim" href="#pipeline">Simular gates</a>
+          <a class="ok-btn btn ghost" href="#referencias">Ver referências</a>
         </div>
       </div>
       <div class="hero-console" aria-label="Resumo operacional">
@@ -117,7 +216,7 @@ result: speed accepted only with control evidence</code></pre>
     </div>
   </section>
     <section id="contexto" class="lesson-sec searchable" data-tags="ia dados pesquisa gráficos referencias">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>01</b> Estado da arte</span>
       <h2>Dados para calibrar a conversa</h2>
@@ -142,7 +241,7 @@ result: speed accepted only with control evidence</code></pre>
       </article>
     </div>
     <div class="charts-grid">
-      <article class="chart-card searchable" data-tags="grafico ia dados adoption-chart">
+      <article class="chart-box chart-card searchable" data-tags="grafico ia dados adoption-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">Stack Overflow 2025, JetBrains 2025, GitHub Octoverse 2025</span>
@@ -152,7 +251,7 @@ result: speed accepted only with control evidence</code></pre>
         </div>
         <canvas id="adoption-chart" width="760" height="360" data-chart-type="bar"></canvas>
         <p class="takeaway">IA deixou de ser exceção. O controle de segurança precisa assumir que código, testes, docs e reviews podem ter participação de IA.</p>
-      </article><article class="chart-card searchable" data-tags="grafico ia dados ai-code-growth-chart">
+      </article><article class="chart-box chart-card searchable" data-tags="grafico ia dados ai-code-growth-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">Sonar State of Code Developer Survey 2026</span>
@@ -162,7 +261,7 @@ result: speed accepted only with control evidence</code></pre>
         </div>
         <canvas id="ai-code-growth-chart" width="760" height="360" data-chart-type="line"></canvas>
         <p class="takeaway">O volume cresce mais rapido que os processos tradicionais de revisão. Batch pequeno, CI rapido e abuse tests passam a ser controles centrais.</p>
-      </article><article class="chart-card searchable" data-tags="grafico ia dados veracode-risk-chart">
+      </article><article class="chart-box chart-card searchable" data-tags="grafico ia dados veracode-risk-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">Veracode GenAI Code Security Report 2025</span>
@@ -172,7 +271,7 @@ result: speed accepted only with control evidence</code></pre>
         </div>
         <canvas id="veracode-risk-chart" width="760" height="360" data-chart-type="donut"></canvas>
         <p class="takeaway">Funcional e sintaticamente correto não significa seguro. Revisão precisa procurar classes conhecidas de falha.</p>
-      </article><article class="chart-card searchable" data-tags="grafico ia dados language-risk-chart">
+      </article><article class="chart-box chart-card searchable" data-tags="grafico ia dados language-risk-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">Veracode 2025</span>
@@ -182,7 +281,7 @@ result: speed accepted only with control evidence</code></pre>
         </div>
         <canvas id="language-risk-chart" width="760" height="360" data-chart-type="bar"></canvas>
         <p class="takeaway">O risco varia por linguagem e padrão, mas nenhuma stack dispensa validação.</p>
-      </article><article class="chart-card searchable" data-tags="grafico ia dados governance-chart">
+      </article><article class="chart-box chart-card searchable" data-tags="grafico ia dados governance-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">GitLab AI Accountability Report 2026</span>
@@ -192,7 +291,7 @@ result: speed accepted only with control evidence</code></pre>
         </div>
         <canvas id="governance-chart" width="760" height="360" data-chart-type="bar"></canvas>
         <p class="takeaway">O desafio deixa de ser só gerar código e passa a ser saber origem, intenção, responsabilidade e risco residual.</p>
-      </article><article class="chart-card searchable" data-tags="grafico ia dados hallucination-chart">
+      </article><article class="chart-box chart-card searchable" data-tags="grafico ia dados hallucination-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">arXiv 2406.10279</span>
@@ -202,7 +301,7 @@ result: speed accepted only with control evidence</code></pre>
         </div>
         <canvas id="hallucination-chart" width="760" height="360" data-chart-type="bar"></canvas>
         <p class="takeaway">Dependência sugerida por IA deve ser tratada como input não confiável até haver verificação externa.</p>
-      </article><article class="chart-card searchable" data-tags="grafico ia dados dora-chart">
+      </article><article class="chart-box chart-card searchable" data-tags="grafico ia dados dora-chart">
         <div class="chart-head">
           <div>
             <span class="mini-label">DORA Impact of Generative AI</span>
@@ -216,7 +315,7 @@ result: speed accepted only with control evidence</code></pre>
     </div>
   </section>
     <section id="sdlc" class="lesson-sec searchable" data-tags="sdlc ia fundamentos governanca">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>02</b> Mapa</span>
       <h2>SDLC seguro + IA assistida</h2>
@@ -309,7 +408,7 @@ result: speed accepted only with control evidence</code></pre>
     <div id="active-filter" class="filter-state" hidden></div>
   </section>
     <section id="hub" class="lesson-sec searchable" data-tags="fundamentos praticas checklist ia">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>03</b> Práticas</span>
       <h2>Hub de práticas fundamentais</h2>
@@ -317,134 +416,134 @@ result: speed accepted only with control evidence</code></pre>
     <p>Os cards abrem guias densos, checklists e simuladores. A IA aparece como camada transversal: ajuda, risco e gate.</p>
   </div>
     <div class="filter-bar no-print" id="tag-filters">
-      <button class="chip active" data-tag="todos">todos</button><button class="chip " data-tag="fundamentos">fundamentos</button><button class="chip " data-tag="ia">ia</button><button class="chip " data-tag="supply-chain">supply-chain</button><button class="chip " data-tag="ci-cd">ci-cd</button><button class="chip " data-tag="docker">docker</button><button class="chip " data-tag="iac">iac</button><button class="chip " data-tag="typescript">typescript</button><button class="chip " data-tag="python">python</button><button class="chip " data-tag="java">java</button><button class="chip " data-tag="csharp">csharp</button><button class="chip " data-tag="secrets">secrets</button><button class="chip " data-tag="auth">auth</button>
+      <button class="ok-badge chip active" data-tag="todos">todos</button><button class="ok-badge chip " data-tag="fundamentos">fundamentos</button><button class="ok-badge chip " data-tag="ia">ia</button><button class="ok-badge chip " data-tag="supply-chain">supply-chain</button><button class="ok-badge chip " data-tag="ci-cd">ci-cd</button><button class="ok-badge chip " data-tag="docker">docker</button><button class="ok-badge chip " data-tag="iac">iac</button><button class="ok-badge chip " data-tag="typescript">typescript</button><button class="ok-badge chip " data-tag="python">python</button><button class="ok-badge chip " data-tag="java">java</button><button class="ok-badge chip " data-tag="csharp">csharp</button><button class="ok-badge chip " data-tag="secrets">secrets</button><button class="ok-badge chip " data-tag="auth">auth</button>
     </div>
-    <div class="practice-grid">
-      <article class="practice-card searchable" data-tags="fundamentos requisitos ia" id="card-threat-modeling">
+    <div class="owasp-bento practice-grid">
+      <article class="owasp-card practice-card searchable" data-tags="fundamentos requisitos ia" id="card-threat-modeling">
         <div class="card-num">01</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">requisitos</span><span class="badge">ia</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">requisitos</span><span class="ok-badge badge">ia</span></div>
           <h3>Threat modeling e requisitos de segurança</h3>
           <p>Transforma feature em fluxo de confiança, abuso previsível e critério verificável.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="threat-modeling">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="threat-modeling">Checklist</button>
-            <a class="btn sm cyan" href="#pr-review">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="threat-modeling">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="threat-modeling">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#pr-review">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="fundamentos typescript python java csharp codigo" id="card-validation-encoding">
+      </article><article class="owasp-card practice-card searchable" data-tags="fundamentos typescript python java csharp codigo" id="card-validation-encoding">
         <div class="card-num">02</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">typescript</span><span class="badge">python</span><span class="badge">java</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">typescript</span><span class="ok-badge badge">python</span><span class="ok-badge badge">java</span></div>
           <h3>Validação de entrada e output encoding</h3>
           <p>Entrada é contrato, saída é contexto. Validar não substitui encoding.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="validation-encoding">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="validation-encoding">Checklist</button>
-            <a class="btn sm cyan" href="#code-vault">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="validation-encoding">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="validation-encoding">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#codigo">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="fundamentos auth codigo ia" id="card-authz-session">
+      </article><article class="owasp-card practice-card searchable" data-tags="fundamentos auth codigo ia" id="card-authz-session">
         <div class="card-num">03</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">auth</span><span class="badge">codigo</span><span class="badge">ia</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">auth</span><span class="ok-badge badge">codigo</span><span class="ok-badge badge">ia</span></div>
           <h3>Autenticação, sessão e autorização</h3>
           <p>Autenticar prova identidade; autorizar decide acesso a cada recurso.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="authz-session">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="authz-session">Checklist</button>
-            <a class="btn sm cyan" href="#pr-review">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="authz-session">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="authz-session">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#pr-review">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="fundamentos secrets ci-cd ia" id="card-secrets">
+      </article><article class="owasp-card practice-card searchable" data-tags="fundamentos secrets ci-cd ia" id="card-secrets">
         <div class="card-num">04</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">secrets</span><span class="badge">ci-cd</span><span class="badge">ia</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">secrets</span><span class="ok-badge badge">ci-cd</span><span class="ok-badge badge">ia</span></div>
           <h3>Secrets, chaves e variáveis de ambiente</h3>
           <p>Segredo não entra em código, log, prompt, build arg, imagem ou screenshot.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="secrets">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="secrets">Checklist</button>
-            <a class="btn sm cyan" href="#agent-permission">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="secrets">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="secrets">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#agent-permission">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="fundamentos dados codigo" id="card-crypto-data">
+      </article><article class="owasp-card practice-card searchable" data-tags="fundamentos dados codigo" id="card-crypto-data">
         <div class="card-num">05</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">dados</span><span class="badge">codigo</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">dados</span><span class="ok-badge badge">codigo</span></div>
           <h3>Criptografia e proteção de dados</h3>
           <p>Use primitivas maduras e foque no ciclo de vida da chave.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="crypto-data">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="crypto-data">Checklist</button>
-            <a class="btn sm cyan" href="#code-vault">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="crypto-data">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="crypto-data">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#codigo">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="fundamentos logs operacao ia" id="card-logs-errors">
+      </article><article class="owasp-card practice-card searchable" data-tags="fundamentos logs operacao ia" id="card-logs-errors">
         <div class="card-num">06</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">logs</span><span class="badge">operacao</span><span class="badge">ia</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">logs</span><span class="ok-badge badge">operacao</span><span class="ok-badge badge">ia</span></div>
           <h3>Erros, logs e observabilidade segura</h3>
           <p>Log ajuda operação, mas não pode virar vazamento ou oracle de ataque.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="logs-errors">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="logs-errors">Checklist</button>
-            <a class="btn sm cyan" href="#pr-review">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="logs-errors">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="logs-errors">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#pr-review">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="fundamentos api upload codigo" id="card-api-upload-parsing">
+      </article><article class="owasp-card practice-card searchable" data-tags="fundamentos api upload codigo" id="card-api-upload-parsing">
         <div class="card-num">07</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">fundamentos</span><span class="badge">api</span><span class="badge">upload</span><span class="badge">codigo</span></div>
+          <div class="tag-row"><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">api</span><span class="ok-badge badge">upload</span><span class="ok-badge badge">codigo</span></div>
           <h3>APIs, uploads e parsing de arquivos</h3>
           <p>Cada parser é superfície de ataque: tamanho, tipo, path, conteúdo e timeout importam.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="api-upload-parsing">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="api-upload-parsing">Checklist</button>
-            <a class="btn sm cyan" href="#code-vault">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="api-upload-parsing">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="api-upload-parsing">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#codigo">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="supply-chain npm pip nuget maven ia" id="card-dependencies">
+      </article><article class="owasp-card practice-card searchable" data-tags="supply-chain npm pip nuget maven ia" id="card-dependencies">
         <div class="card-num">08</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">supply-chain</span><span class="badge">npm</span><span class="badge">pip</span><span class="badge">nuget</span></div>
+          <div class="tag-row"><span class="ok-badge badge">supply-chain</span><span class="ok-badge badge">npm</span><span class="ok-badge badge">pip</span><span class="ok-badge badge">nuget</span></div>
           <h3>Dependências e supply chain</h3>
           <p>Instalar a biblioteca certa é controle de segurança, não tarefa administrativa.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="dependencies">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="dependencies">Checklist</button>
-            <a class="btn sm cyan" href="#supply-chain">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="dependencies">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="dependencies">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#supply-chain">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="ci-cd docker iac supply-chain" id="card-pipeline-docker-iac">
+      </article><article class="owasp-card practice-card searchable" data-tags="ci-cd docker iac supply-chain" id="card-pipeline-docker-iac">
         <div class="card-num">09</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">ci-cd</span><span class="badge">docker</span><span class="badge">iac</span><span class="badge">supply-chain</span></div>
+          <div class="tag-row"><span class="ok-badge badge">ci-cd</span><span class="ok-badge badge">docker</span><span class="ok-badge badge">iac</span><span class="ok-badge badge">supply-chain</span></div>
           <h3>CI/CD, Docker e IaC seguros</h3>
           <p>Pipeline é código privilegiado; container e IaC são fronteiras de produção.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="pipeline-docker-iac">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="pipeline-docker-iac">Checklist</button>
-            <a class="btn sm cyan" href="#pipeline">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="pipeline-docker-iac">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="pipeline-docker-iac">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#pipeline">Simular</a>
           </div>
         </div>
-      </article><article class="practice-card searchable" data-tags="ia agentes governanca supply-chain" id="card-ai-agents">
+      </article><article class="owasp-card practice-card searchable" data-tags="ia agentes governanca supply-chain" id="card-ai-agents">
         <div class="card-num">10</div>
         <div class="card-body">
-          <div class="tag-row"><span class="badge">ia</span><span class="badge">agentes</span><span class="badge">governanca</span><span class="badge">supply-chain</span></div>
+          <div class="tag-row"><span class="ok-badge badge">ia</span><span class="ok-badge badge">agentes</span><span class="ok-badge badge">governanca</span><span class="ok-badge badge">supply-chain</span></div>
           <h3>Uso seguro de IA e agentes no SDLC</h3>
           <p>Agente de código é automação com poder real: arquivos, comandos, rede e conectores.</p>
-          <div class="card-actions no-print">
-            <button class="btn sm solid" data-open-practice="ai-agents">+ Info</button>
-            <button class="btn sm ghost" data-open-checklist="ai-agents">Checklist</button>
-            <a class="btn sm cyan" href="#agent-permission">Simular</a>
+          <div class="hub-card-actions card-actions no-print">
+            <button class="ok-btn btn sm solid hub-btn-info" data-open-practice="ai-agents">+ Info</button>
+            <button class="ok-btn btn sm ghost hub-btn-info" data-open-checklist="ai-agents">Checklist</button>
+            <a class="ok-btn btn sm cyan hub-btn-sim" href="#agent-permission">Simular</a>
           </div>
         </div>
       </article>
     </div>
   </section>
     <section id="codigo" class="lesson-sec searchable" data-tags="codigo typescript javascript python java csharp ci-cd docker iac">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>04</b> Cofre</span>
       <h2>Padrões vulneráveis e seguros por stack</h2>
@@ -452,13 +551,13 @@ result: speed accepted only with control evidence</code></pre>
     <p>Cada exemplo conecta falha, correção, gate e prompt melhor para assistente de IA.</p>
   </div>
     <div class="tabs no-print" id="code-tabs">
-      <button class="tab active" data-code-lang="TypeScript/JavaScript">TypeScript/JavaScript</button><button class="tab " data-code-lang="Python">Python</button><button class="tab " data-code-lang="Java">Java</button><button class="tab " data-code-lang="C#">C#</button><button class="tab " data-code-lang="CI/CD">CI/CD</button><button class="tab " data-code-lang="Docker">Docker</button><button class="tab " data-code-lang="IaC">IaC</button>
+      <button class="ok-tab tab active" data-code-lang="TypeScript/JavaScript">TypeScript/JavaScript</button><button class="ok-tab tab " data-code-lang="Python">Python</button><button class="ok-tab tab " data-code-lang="Java">Java</button><button class="ok-tab tab " data-code-lang="C#">C#</button><button class="ok-tab tab " data-code-lang="CI/CD">CI/CD</button><button class="ok-tab tab " data-code-lang="Docker">Docker</button><button class="ok-tab tab " data-code-lang="IaC">IaC</button>
     </div>
     <div class="code-vault">
       <article class="code-case searchable active" data-code-panel="TypeScript/JavaScript" data-tags="typescript javascript validation-encoding">
         <div class="code-case-head">
           <div><span class="mini-label">TypeScript/JavaScript</span><h3>SQL injection e XSS no mesmo fluxo</h3></div>
-          <span class="badge danger">gate: Unit test com payload de injection</span>
+          <span class="ok-badge badge danger">gate: Unit test com payload de injection</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>app.get('/users', async (req, res) =&gt; {
@@ -483,7 +582,7 @@ app.get('/users', async (req, res) =&gt; {
       </article><article class="code-case searchable " data-code-panel="Python" data-tags="python upload validation-encoding">
         <div class="code-case-head">
           <div><span class="mini-label">Python</span><h3>Path traversal em download</h3></div>
-          <span class="badge danger">gate: Teste com ../</span>
+          <span class="ok-badge badge danger">gate: Teste com ../</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>@app.get('/download')
@@ -509,7 +608,7 @@ def download():
       </article><article class="code-case searchable " data-code-panel="Java" data-tags="java maven supply-chain">
         <div class="code-case-head">
           <div><span class="mini-label">Java</span><h3>Log4Shell como lembrete de transitivas</h3></div>
-          <span class="badge danger">gate: OWASP Dependency-Check</span>
+          <span class="ok-badge badge danger">gate: OWASP Dependency-Check</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>&lt;dependency&gt;
@@ -538,7 +637,7 @@ def download():
       </article><article class="code-case searchable " data-code-panel="C#" data-tags="csharp auth">
         <div class="code-case-head">
           <div><span class="mini-label">C#</span><h3>Autorização quebrada por recurso</h3></div>
-          <span class="badge danger">gate: Teste com dois usuários</span>
+          <span class="ok-badge badge danger">gate: Teste com dois usuários</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>[Authorize]
@@ -561,7 +660,7 @@ public async Task&lt;IActionResult&gt; GetInvoice(Guid id) {
       </article><article class="code-case searchable " data-code-panel="CI/CD" data-tags="ci-cd secrets supply-chain">
         <div class="code-case-head">
           <div><span class="mini-label">CI/CD</span><h3>Secrets em PR não confiável</h3></div>
-          <span class="badge danger">gate: Permissões mínimas</span>
+          <span class="ok-badge badge danger">gate: Permissões mínimas</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>on: pull_request_target
@@ -590,7 +689,7 @@ steps:
       </article><article class="code-case searchable " data-code-panel="Docker" data-tags="docker container">
         <div class="code-case-head">
           <div><span class="mini-label">Docker</span><h3>Imagem root e superfície desnecessária</h3></div>
-          <span class="badge danger">gate: Docker Scout/container scan</span>
+          <span class="ok-badge badge danger">gate: Docker Scout/container scan</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>FROM node:latest
@@ -619,7 +718,7 @@ CMD [&quot;node&quot;, &quot;server.js&quot;]</code></pre></div>
       </article><article class="code-case searchable " data-code-panel="IaC" data-tags="iac cloud">
         <div class="code-case-head">
           <div><span class="mini-label">IaC</span><h3>Bucket público e IAM wildcard</h3></div>
-          <span class="badge danger">gate: Checkov/tfsec</span>
+          <span class="ok-badge badge danger">gate: Checkov/tfsec</span>
         </div>
         <div class="code-columns">
           <div><span class="code-label bad">Vulnerável</span><pre><code>resource &quot;aws_s3_bucket_acl&quot; &quot;public&quot; {
@@ -650,7 +749,7 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     </div>
   </section>
     <section id="supply-chain" class="lesson-sec searchable" data-tags="supply-chain npm pip nuget maven ia log4j">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>05</b> Lab</span>
       <h2>Supply Chain Lab</h2>
@@ -665,7 +764,7 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     </div>
   </section>
     <section id="ia-dev" class="lesson-sec searchable" data-tags="ia agentes vibe-coding prompt-injection mcp sandbox">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>06</b> IA</span>
       <h2>IA no desenvolvimento: potência com limite</h2>
@@ -724,7 +823,7 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     </div>
   </section>
     <section id="pr-review" class="lesson-sec searchable" data-tags="pr-review ia review authz supply-chain docker iac secrets">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>07</b> Simulador</span>
       <h2>PR Review Simulator</h2>
@@ -739,12 +838,12 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
       <div class="finding-panel">
         <span class="mini-label">Achados marcados</span>
         <div id="finding-results"></div>
-        <button class="btn sm solid no-print" id="review-reset">Reiniciar review</button>
+        <button class="ok-btn btn sm solid no-print" id="review-reset">Reiniciar review</button>
       </div>
     </div>
   </section>
     <section id="pipeline" class="lesson-sec searchable" data-tags="pipeline ci-cd sast sca secrets docker iac sbom">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>08</b> Gates</span>
       <h2>Pipeline Gate Simulator</h2>
@@ -765,7 +864,7 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     </div>
   </section>
     <section id="lab-externo" class="lesson-sec searchable" data-tags="lab ferramentas npm pip nuget maven docker checkov gitleaks">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>09</b> Opcional</span>
       <h2>Lab externo opcional</h2>
@@ -801,7 +900,7 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     </div>
   </section>
     <section id="quiz" class="lesson-sec searchable" data-tags="quiz verificacao ia fundamentos supply-chain docker">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>10</b> Quiz</span>
       <h2>Quiz de verificação</h2>
@@ -811,7 +910,7 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     <div id="quiz-box" class="quiz-box"></div>
   </section>
     <section id="referencias" class="lesson-sec searchable" data-tags="referencias fontes links materiais pesquisa">
-    <div class="section-head">
+    <div class="ok-sec-hd section-head">
     <div>
       <span class="section-kicker"><b>11</b> Referências</span>
       <h2>Materiais usados na pesquisa</h2>
@@ -819,176 +918,176 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
     <p>Links para as fontes usadas no conteúdo, gráficos, simuladores e checklists. A lista pode ser filtrada por categoria.</p>
   </div>
     <div class="filter-bar no-print" id="ref-filters">
-      <button class="chip active" data-ref-tag="todos">todos</button><button class="chip " data-ref-tag="fundamentos">fundamentos</button><button class="chip " data-ref-tag="ia">ia</button><button class="chip " data-ref-tag="agentes">agentes</button><button class="chip " data-ref-tag="supply-chain">supply-chain</button><button class="chip " data-ref-tag="docker">docker</button><button class="chip " data-ref-tag="iac">iac</button><button class="chip " data-ref-tag="ci-cd">ci-cd</button><button class="chip " data-ref-tag="sca">sca</button><button class="chip " data-ref-tag="dados">dados</button><button class="chip " data-ref-tag="ferramentas">ferramentas</button>
+      <button class="ok-badge chip active" data-ref-tag="todos">todos</button><button class="ok-badge chip " data-ref-tag="fundamentos">fundamentos</button><button class="ok-badge chip " data-ref-tag="ia">ia</button><button class="ok-badge chip " data-ref-tag="agentes">agentes</button><button class="ok-badge chip " data-ref-tag="supply-chain">supply-chain</button><button class="ok-badge chip " data-ref-tag="docker">docker</button><button class="ok-badge chip " data-ref-tag="iac">iac</button><button class="ok-badge chip " data-ref-tag="ci-cd">ci-cd</button><button class="ok-badge chip " data-ref-tag="sca">sca</button><button class="ok-badge chip " data-ref-tag="dados">dados</button><button class="ok-badge chip " data-ref-tag="ferramentas">ferramentas</button>
     </div>
     <div class="reference-grid">
-      <article class="ref-card searchable" data-ref-tags="fundamentos sdlc" data-tags="fundamentos sdlc referencias">
-        <div class="ref-meta"><span>Fonte primaria</span><span class="badge">fundamentos</span><span class="badge">sdlc</span></div>
+      <article class="ref-card searchable" data-ref-tags="fundamentos sdlc ferramentas" data-tags="fundamentos sdlc ferramentas referencias">
+        <div class="ref-meta"><span>Fonte primaria</span><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">sdlc</span></div>
         <h3>NIST SSDF SP 800-218</h3>
         <p>Base para organizar praticas de desenvolvimento seguro por etapa do SDLC.</p>
         <a href="https://csrc.nist.gov/pubs/sp/800/218/final" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="fundamentos appsec" data-tags="fundamentos appsec referencias">
-        <div class="ref-meta"><span>Fonte primaria</span><span class="badge">fundamentos</span><span class="badge">appsec</span></div>
+        <div class="ref-meta"><span>Fonte primaria</span><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">appsec</span></div>
         <h3>OWASP Developer Guide</h3>
         <p>Guia pratico para transformar riscos comuns em controles de engenharia.</p>
         <a href="https://owasp.org/www-project-developer-guide/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="fundamentos review" data-tags="fundamentos review referencias">
-        <div class="ref-meta"><span>Checklist</span><span class="badge">fundamentos</span><span class="badge">review</span></div>
+        <div class="ref-meta"><span>Checklist</span><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">review</span></div>
         <h3>OWASP Secure Coding Checklist</h3>
         <p>Checklist operacional para revisao de codigo seguro.</p>
         <a href="https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/02-checklist/05-checklist" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="fundamentos codigo" data-tags="fundamentos codigo referencias">
-        <div class="ref-meta"><span>Fonte primaria</span><span class="badge">fundamentos</span><span class="badge">codigo</span></div>
+        <div class="ref-meta"><span>Fonte primaria</span><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">codigo</span></div>
         <h3>OWASP Cheat Sheet Series</h3>
         <p>Referencia detalhada para validacao, encoding, auth, logging, upload, secrets e criptografia.</p>
         <a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="fundamentos requisitos" data-tags="fundamentos requisitos referencias">
-        <div class="ref-meta"><span>Padrao</span><span class="badge">fundamentos</span><span class="badge">requisitos</span></div>
+        <div class="ref-meta"><span>Padrao</span><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">requisitos</span></div>
         <h3>OWASP ASVS</h3>
         <p>Ajuda a converter requisitos de seguranca em criterios verificaveis.</p>
         <a href="https://owasp.org/www-project-application-security-verification-standard/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="sdlc governanca" data-tags="sdlc governanca referencias">
-        <div class="ref-meta"><span>Modelo</span><span class="badge">sdlc</span><span class="badge">governanca</span></div>
+        <div class="ref-meta"><span>Modelo</span><span class="ok-badge badge">sdlc</span><span class="ok-badge badge">governanca</span></div>
         <h3>OWASP SAMM</h3>
         <p>Modelo de maturidade para governanca de AppSec no ciclo de desenvolvimento.</p>
         <a href="https://owasp.org/www-project-samm/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="fundamentos api" data-tags="fundamentos api referencias">
-        <div class="ref-meta"><span>Fonte primaria</span><span class="badge">fundamentos</span><span class="badge">api</span></div>
+        <div class="ref-meta"><span>Fonte primaria</span><span class="ok-badge badge">fundamentos</span><span class="ok-badge badge">api</span></div>
         <h3>OWASP API Security Top 10</h3>
         <p>Referencia para BOLA, mass assignment, autenticacao de API, rate limit e inventario de endpoints.</p>
         <a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="sdlc governanca" data-tags="sdlc governanca referencias">
-        <div class="ref-meta"><span>Fonte primaria</span><span class="badge">sdlc</span><span class="badge">governanca</span></div>
+        <div class="ref-meta"><span>Fonte primaria</span><span class="ok-badge badge">sdlc</span><span class="ok-badge badge">governanca</span></div>
         <h3>CISA Secure by Design</h3>
         <p>Enfatiza responsabilidade do produtor de software e reducao de classes de falhas.</p>
         <a href="https://www.cisa.gov/securebydesign" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia dados" data-tags="ia dados referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">dados</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">dados</span></div>
         <h3>Stack Overflow Developer Survey 2025</h3>
         <p>Mostra adoção de IA por profissionais e necessidade de verificacao humana.</p>
         <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia dados" data-tags="ia dados referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">dados</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">dados</span></div>
         <h3>JetBrains Developer Ecosystem 2025</h3>
         <p>Mostra IA como habilidade central e uso regular em coding/development.</p>
         <a href="https://blog.jetbrains.com/research/2025/10/state-of-developer-ecosystem-2025/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia dados" data-tags="ia dados referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">dados</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">dados</span></div>
         <h3>GitHub Octoverse 2025</h3>
         <p>Contextualiza adoção de Copilot e agentes no ecossistema GitHub.</p>
         <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia dados" data-tags="ia dados referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">dados</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">dados</span></div>
         <h3>Sonar State of Code Developer Survey 2026</h3>
         <p>Dados sobre uso diario, vibe coding, codigo assistido por IA e gargalo de validacao.</p>
         <a href="https://www.sonarsource.com/state-of-code-developer-survey-report.pdf" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia codigo" data-tags="ia codigo referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">codigo</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">codigo</span></div>
         <h3>Veracode GenAI Code Security Report 2025</h3>
         <p>Resultados de seguranca em codigo gerado por mais de 100 LLMs.</p>
         <a href="https://www.veracode.com/blog/genai-code-security-report/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia governanca" data-tags="ia governanca referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">governanca</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">governanca</span></div>
         <h3>GitLab AI Accountability Report 2026</h3>
         <p>Dados sobre governanca, rastreabilidade e gargalo de review/validacao.</p>
         <a href="https://ir.gitlab.com/news/news-details/2026/GitLab-Research-Reveals-Organizations-Are-Generating-AI-Code-Faster-Than-They-Can-Control-It/default.aspx" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia devops" data-tags="ia devops referencias">
-        <div class="ref-meta"><span>Relatorio</span><span class="badge">ia</span><span class="badge">devops</span></div>
+        <div class="ref-meta"><span>Relatorio</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">devops</span></div>
         <h3>DORA Impact of Generative AI</h3>
         <p>Mostra que IA melhora produtividade individual, mas exige feedback loops fortes.</p>
         <a href="https://dora.dev/ai/gen-ai-report/report/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia supply-chain" data-tags="ia supply-chain referencias">
-        <div class="ref-meta"><span>Paper</span><span class="badge">ia</span><span class="badge">supply-chain</span></div>
+        <div class="ref-meta"><span>Paper</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">supply-chain</span></div>
         <h3>We Have a Package for You!</h3>
         <p>Analise de alucinacao de pacotes e risco de slopsquatting em codigo gerado.</p>
         <a href="https://arxiv.org/abs/2406.10279" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia llm" data-tags="ia llm referencias">
-        <div class="ref-meta"><span>Fonte primaria</span><span class="badge">ia</span><span class="badge">llm</span></div>
+        <div class="ref-meta"><span>Fonte primaria</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">llm</span></div>
         <h3>OWASP Top 10 for LLM Applications</h3>
         <p>Referencia para prompt injection, supply chain de LLMs, dados sensiveis e autonomia excessiva.</p>
         <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia governanca" data-tags="ia governanca referencias">
-        <div class="ref-meta"><span>Framework</span><span class="badge">ia</span><span class="badge">governanca</span></div>
+        <div class="ref-meta"><span>Framework</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">governanca</span></div>
         <h3>NIST AI RMF</h3>
         <p>Base para governanca de risco em sistemas com IA.</p>
         <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia ameacas" data-tags="ia ameacas referencias">
-        <div class="ref-meta"><span>Base tecnica</span><span class="badge">ia</span><span class="badge">ameacas</span></div>
+        <div class="ref-meta"><span>Base tecnica</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">ameacas</span></div>
         <h3>MITRE ATLAS</h3>
         <p>Taticas e tecnicas adversariais contra sistemas de IA.</p>
         <a href="https://atlas.mitre.org/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia agentes" data-tags="ia agentes referencias">
-        <div class="ref-meta"><span>Documentacao</span><span class="badge">ia</span><span class="badge">agentes</span></div>
+        <div class="ref-meta"><span>Documentacao</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">agentes</span></div>
         <h3>OpenAI Codex: approvals and security</h3>
         <p>Referencia de permissoes, approvals e execucao segura para agentes de codigo.</p>
         <a href="https://developers.openai.com/codex/agent-approvals-security" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="ia agentes" data-tags="ia agentes referencias">
-        <div class="ref-meta"><span>Documentacao</span><span class="badge">ia</span><span class="badge">agentes</span></div>
+        <div class="ref-meta"><span>Documentacao</span><span class="ok-badge badge">ia</span><span class="ok-badge badge">agentes</span></div>
         <h3>Claude Code Security</h3>
         <p>Referencia de seguranca, permissoes e sandbox para agentes de desenvolvimento.</p>
         <a href="https://code.claude.com/docs/en/security" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="supply-chain ci-cd" data-tags="supply-chain ci-cd referencias">
-        <div class="ref-meta"><span>Framework</span><span class="badge">supply-chain</span><span class="badge">ci-cd</span></div>
+        <div class="ref-meta"><span>Framework</span><span class="ok-badge badge">supply-chain</span><span class="ok-badge badge">ci-cd</span></div>
         <h3>SLSA</h3>
         <p>Modelo de niveis para integridade de build, proveniencia e supply chain.</p>
         <a href="https://slsa.dev/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="supply-chain assinatura" data-tags="supply-chain assinatura referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">supply-chain</span><span class="badge">assinatura</span></div>
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">supply-chain</span><span class="ok-badge badge">assinatura</span></div>
         <h3>Sigstore</h3>
         <p>Assinatura e verificacao de artefatos, imagens e releases.</p>
         <a href="https://docs.sigstore.dev/about/overview/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
-      </article><article class="ref-card searchable" data-ref-tags="npm sca" data-tags="npm sca referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">npm</span><span class="badge">sca</span></div>
+      </article><article class="ref-card searchable" data-ref-tags="npm sca ferramentas" data-tags="npm sca ferramentas referencias">
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">npm</span><span class="ok-badge badge">sca</span></div>
         <h3>npm audit</h3>
         <p>Auditoria de vulnerabilidades em dependencias npm.</p>
         <a href="https://docs.npmjs.com/cli/v9/commands/npm-audit" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
-      </article><article class="ref-card searchable" data-ref-tags="npm proveniencia" data-tags="npm proveniencia referencias">
-        <div class="ref-meta"><span>Documentacao</span><span class="badge">npm</span><span class="badge">proveniencia</span></div>
+      </article><article class="ref-card searchable" data-ref-tags="npm proveniencia ferramentas" data-tags="npm proveniencia ferramentas referencias">
+        <div class="ref-meta"><span>Documentacao</span><span class="ok-badge badge">npm</span><span class="ok-badge badge">proveniencia</span></div>
         <h3>npm package provenance</h3>
         <p>Validacao de origem de pacote publicado.</p>
         <a href="https://docs.npmjs.com/viewing-package-provenance/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="python sca" data-tags="python sca referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">python</span><span class="badge">sca</span></div>
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">python</span><span class="ok-badge badge">sca</span></div>
         <h3>pip-audit</h3>
         <p>Auditoria de dependencias Python contra vulnerabilidades conhecidas.</p>
         <a href="https://pypi.org/project/pip-audit/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
-      </article><article class="ref-card searchable" data-ref-tags="csharp sca" data-tags="csharp sca referencias">
-        <div class="ref-meta"><span>Documentacao</span><span class="badge">csharp</span><span class="badge">sca</span></div>
+      </article><article class="ref-card searchable" data-ref-tags="csharp sca ferramentas" data-tags="csharp sca ferramentas referencias">
+        <div class="ref-meta"><span>Documentacao</span><span class="ok-badge badge">csharp</span><span class="ok-badge badge">sca</span></div>
         <h3>NuGet auditing</h3>
         <p>Auditoria de pacotes NuGet durante restore/build.</p>
         <a href="https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="supply-chain review" data-tags="supply-chain review referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">supply-chain</span><span class="badge">review</span></div>
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">supply-chain</span><span class="ok-badge badge">review</span></div>
         <h3>GitHub Dependency Review</h3>
         <p>Revisao de mudancas em dependencias antes de merge.</p>
         <a href="https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
-      </article><article class="ref-card searchable" data-ref-tags="java sca" data-tags="java sca referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">java</span><span class="badge">sca</span></div>
+      </article><article class="ref-card searchable" data-ref-tags="java sca ferramentas" data-tags="java sca ferramentas referencias">
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">java</span><span class="ok-badge badge">sca</span></div>
         <h3>OWASP Dependency-Check</h3>
         <p>SCA para Java/Maven/Gradle e outros ecossistemas.</p>
         <a href="https://owasp.org/www-project-dependency-check/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
-      </article><article class="ref-card searchable" data-ref-tags="docker" data-tags="docker referencias">
-        <div class="ref-meta"><span>Documentacao</span><span class="badge">docker</span></div>
+      </article><article class="ref-card searchable" data-ref-tags="docker ferramentas" data-tags="docker ferramentas referencias">
+        <div class="ref-meta"><span>Documentacao</span><span class="ok-badge badge">docker</span></div>
         <h3>Docker build best practices</h3>
         <p>Praticas de imagem, camadas, pinning e reducao de superficie.</p>
         <a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="docker sca" data-tags="docker sca referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">docker</span><span class="badge">sca</span></div>
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">docker</span><span class="ok-badge badge">sca</span></div>
         <h3>Docker Scout</h3>
         <p>Analise de CVEs e politicas para imagens de container.</p>
         <a href="https://docs.docker.com/scout/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
-      </article><article class="ref-card searchable" data-ref-tags="docker" data-tags="docker referencias">
-        <div class="ref-meta"><span>Checklist</span><span class="badge">docker</span></div>
+      </article><article class="ref-card searchable" data-ref-tags="docker ferramentas" data-tags="docker ferramentas referencias">
+        <div class="ref-meta"><span>Checklist</span><span class="ok-badge badge">docker</span></div>
         <h3>OWASP Docker Security Cheat Sheet</h3>
         <p>Controles especificos para containers, usuario nao-root e runtime.</p>
         <a href="https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="kubernetes iac" data-tags="kubernetes iac referencias">
-        <div class="ref-meta"><span>Padrao</span><span class="badge">kubernetes</span><span class="badge">iac</span></div>
+        <div class="ref-meta"><span>Padrao</span><span class="ok-badge badge">kubernetes</span><span class="ok-badge badge">iac</span></div>
         <h3>Kubernetes Pod Security Standards</h3>
         <p>Perfis baseline/restricted para pods em Kubernetes.</p>
         <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
       </article><article class="ref-card searchable" data-ref-tags="iac" data-tags="iac referencias">
-        <div class="ref-meta"><span>Ferramenta</span><span class="badge">iac</span></div>
+        <div class="ref-meta"><span>Ferramenta</span><span class="ok-badge badge">iac</span></div>
         <h3>Checkov</h3>
         <p>Scanner de IaC para Terraform, Kubernetes, CloudFormation e pipelines.</p>
         <a href="https://www.checkov.io/1.Welcome/What%20is%20Checkov.html" target="_blank" rel="noreferrer">Abrir fonte ↗</a>
@@ -997,14 +1096,14 @@ resources = [&quot;${aws_s3_bucket.data.arn}/reports/*&quot;]</code></pre></div>
   </section>
   </main>
 </div>
-<div class="modal" id="practice-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-dialog">
-      <div class="modal-toolbar">
+<div class="owasp-modal modal" id="practice-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="owasp-modal-backdrop modal-backdrop" data-close-modal></div>
+    <div class="owasp-modal-dialog modal-dialog">
+      <div class="owasp-modal-toolbar modal-toolbar">
         <span id="modal-kicker">+ Info</span>
         <button class="icon-btn" data-close-modal aria-label="Fechar modal">×</button>
       </div>
-      <div class="modal-body" id="modal-body"></div>
+      <div class="owasp-modal-scroll modal-body" id="modal-body"></div>
     </div>
   </div>
 <div class="toast no-print" id="toast"></div>
@@ -1244,7 +1343,7 @@ function openPractice(id, mode) {
   if (!p) return;
   const refs = (p.refs || []).map((rid) => sourceById[rid]).filter(Boolean);
   $('#modal-kicker').textContent = mode === 'checklist' ? 'Checklist' : '+ Info';
-  $('#modal-body').innerHTML = '<div class="modal-title"><div class="big-num">' + p.num + '</div><div><h2>' + escHtml(p.title) + '</h2><p>' + escHtml(p.short) + '</p><div class="tag-row">' + p.tags.map((t) => '<span class="badge">' + escHtml(t) + '</span>').join('') + '</div></div></div>' +
+  $('#modal-body').innerHTML = '<div class="modal-title"><div class="big-num">' + p.num + '</div><div><h2>' + escHtml(p.title) + '</h2><p>' + escHtml(p.short) + '</p><div class="tag-row">' + p.tags.map((t) => '<span class="ok-badge badge">' + escHtml(t) + '</span>').join('') + '</div></div></div>' +
     '<div class="modal-section-grid">' +
     modalBox('Visão geral', '<p>' + escHtml(p.why) + '</p>') +
     modalBox('Como detectar', '<ul>' + p.detect.map((x) => '<li>' + escHtml(x) + '</li>').join('') + '</ul>') +
